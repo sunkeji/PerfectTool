@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/layout_sideletter_bar" />
+        <include layout="@layout/layout_sideletter_bar_view" />
     </RelativeLayout>
 
     <LinearLayout
@@ -17,6 +17,11 @@
         android:orientation="vertical">
 
         <include layout="@layout/layout_tags" />
+
+        <com.skj.wheel.definedview.GridPasswordView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x50"
+            android:layout_margin="@dimen/x20" />
 
         <Button
             android:id="@+id/btn_carmera"

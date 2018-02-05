@@ -1,8 +1,5 @@
 package com.skj.wheel.citylist.utils;
 
-/**
- * author zaaach on 2016/1/26.
- */
 public class StringUtils {
     /**
      * 提取出城市或者县

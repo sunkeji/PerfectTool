@@ -1,13 +1,11 @@
 package com.skj.wheel.citylist.model;
 
-/**
- * author zaaach on 2016/1/26.
- */
 public class City {
     private String name;
     private String pinyin;
 
-    public City() {}
+    public City() {
+    }
 
     public City(String name, String pinyin) {
         this.name = name;

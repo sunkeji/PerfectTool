@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.skj.wheel.definedview.SideLetterBarView
+            android:id="@+id/side_letter_bar"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/white"
+            app:letter_text_color="@color/main_color"
+            app:letter_text_selectcolor="@color/text_color"
+            app:letter_text_size="@dimen/sp13"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/text_overly"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/cp_overlay_bg"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

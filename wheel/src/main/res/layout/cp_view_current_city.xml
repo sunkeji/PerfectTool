@@ -42,15 +42,12 @@
         android:id="@+id/gridview_current_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/hot_bg"
+        android:background="@color/white"
         android:cacheColorHint="@android:color/transparent"
         android:horizontalSpacing="12dp"
         android:listSelector="@android:color/transparent"
         android:numColumns="3"
-        android:paddingBottom="15dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="@dimen/side_letter_bar_width"
-        android:paddingTop="15dp"
+        android:padding="@dimen/x15"
         android:scrollbars="none"
         android:verticalSpacing="12dp" />
 

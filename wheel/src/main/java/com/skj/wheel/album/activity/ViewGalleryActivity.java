@@ -16,7 +16,7 @@ import com.skj.wheel.R;
 import com.skj.wheel.album.utils.Bimp;
 import com.skj.wheel.album.utils.CacheActivityUtil;
 import com.skj.wheel.album.utils.ViewPagerFixed;
-import com.skj.wheel.gesturesview.PhotoView;
+import com.skj.wheel.gestures.PhotoView;
 
 import java.util.ArrayList;
 

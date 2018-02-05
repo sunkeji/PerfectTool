@@ -13,9 +13,6 @@ import com.skj.wheel.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * author zaaach on 2016/1/26.
- */
 public class HotCityGridAdapter extends BaseAdapter {
     private Context mContext;
     private List<String> mCities;

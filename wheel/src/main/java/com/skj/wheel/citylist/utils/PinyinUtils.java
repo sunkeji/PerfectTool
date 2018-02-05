@@ -4,9 +4,6 @@ import android.text.TextUtils;
 
 import java.util.regex.Pattern;
 
-/**
- * author zaaach on 2016/1/28.
- */
 public class PinyinUtils {
     /**
      * 获取拼音的首字母（大写）

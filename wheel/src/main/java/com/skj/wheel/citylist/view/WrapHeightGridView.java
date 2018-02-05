@@ -4,9 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridView;
 
-/**
- * author zaaach on 2015/1/26.
- */
 public class WrapHeightGridView extends GridView {
     public WrapHeightGridView(Context context) {
         this(context, null);

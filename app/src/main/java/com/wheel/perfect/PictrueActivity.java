@@ -14,8 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.skj.wheel.addresslist.view.SideLetterBar;
-import com.skj.wheel.tags.MyTGView;
+import com.skj.wheel.definedview.SideLetterBarView;
+import com.skj.wheel.definedview.MyTGView;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.FileNotFoundException;
@@ -41,7 +41,7 @@ public class PictrueActivity extends AppCompatActivity {
     @BindView(R.id.tg_text1)
     MyTGView tgText1;
     @BindView(R.id.side_letter_bar)
-    SideLetterBar sideLetterBar;
+    SideLetterBarView sideLetterBarView;
     @BindView(R.id.text_overly)
     TextView textOverly;
 
@@ -62,10 +62,10 @@ public class PictrueActivity extends AppCompatActivity {
         for (int index = 0; index < b.length; index++) {
             letterIndexes.put(b[index], index);
         }
-        sideLetterBar.setLetterList(letterIndexes);
+        sideLetterBarView.setLetterList(letterIndexes);
         textOverly.setVisibility(View.GONE);
-        sideLetterBar.setOverlay(textOverly);
-        sideLetterBar.setOnLetterChangedListener(new SideLetterBar.OnLetterChangedListener() {
+        sideLetterBarView.setOverlay(textOverly);
+        sideLetterBarView.setOnLetterChangedListener(new SideLetterBarView.OnLetterChangedListener() {
             @Override
             public void onLetterChanged(String letter) {
             }

@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.skj.wheel.tags.MyTGView
+        <com.skj.wheel.definedview.MyTGView
             android:id="@+id/tg_text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

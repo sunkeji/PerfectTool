@@ -12,9 +12,6 @@ import com.skj.wheel.R;
 
 import java.util.List;
 
-/**
- * author zaaach on 2016/1/26.
- */
 public class ResultListAdapter extends BaseAdapter {
     private Context mContext;
     private List<City> mCities;

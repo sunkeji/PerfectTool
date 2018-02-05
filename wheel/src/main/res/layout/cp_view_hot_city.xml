@@ -3,30 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/hot_bg"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
+    android:paddingBottom="@dimen/x10"
     tools:ignore="RtlHardcoded">
 
     <TextView
         style="@style/LetterIndexTextViewStyle"
+        android:background="@color/white"
         android:text="@string/cp_hot_city" />
 
-    <com.skj.wheel.citylist.view.WrapHeightGridView
-        android:id="@+id/gridview_hot_city"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:cacheColorHint="@android:color/transparent"
-        android:horizontalSpacing="12dp"
-        android:listSelector="@android:color/transparent"
-        android:numColumns="3"
-        android:paddingLeft="15dp"
-        android:paddingRight="@dimen/side_letter_bar_width"
-        android:scrollbars="none"
-        android:verticalSpacing="12dp" />
+        android:background="@color/hot_bg"
+        android:padding="@dimen/x15">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10px"
-        android:background="@color/hot_bg" />
+        <com.skj.wheel.citylist.view.WrapHeightGridView
+            android:id="@+id/gridview_hot_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:horizontalSpacing="12dp"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="3"
+            android:paddingLeft="15dp"
+            android:paddingRight="@dimen/x15"
+            android:scrollbars="none"
+            android:verticalSpacing="12dp" />
+    </RelativeLayout>
 </LinearLayout>
