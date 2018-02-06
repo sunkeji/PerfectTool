@@ -7,9 +7,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.skj.wheel.definedview.selector.OptionsPickerView;
 import com.skj.wheel.definedview.selector.model.DistrictModel;
-import com.skj.wheel.wheel.model.LocalAreaBean;
-import com.skj.wheel.wheel.widget.XmlParserHandler;
+import com.skj.wheel.definedview.selector.model.LocalAreaBean;
 
+import org.apache.commons.io.IOUtil;
+
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -141,7 +143,7 @@ public class SeletorCityView {
          * 解析json赋值到list
          */
         List<LocalAreaBean.RootBean> provinceList = new ArrayList<>();
-        String result = XmlParserHandler.getStringFromAssert(context);
+        String result = getStringFromAssert(context);
         LocalAreaBean areaBean = (LocalAreaBean) getGsonData(LocalAreaBean.class, result);
         provinceList = areaBean.getRoot();
 
@@ -179,6 +181,23 @@ public class SeletorCityView {
             // 省-市的数据，保存到mCitisDatasMap
             mCitisDatasMap.put(provinceList.get(i).getProvince(), cityNames);
         }
+    }
+
+    /**
+     * 读取getAssets的城市json
+     *
+     * @param context
+     * @return
+     */
+    public static String getStringFromAssert(Context context) {
+        try {
+            InputStreamReader inputReader = new InputStreamReader(context.getResources().getAssets().open("city.json"));
+            String result = IOUtil.toString(inputReader);
+            return "{\"root\":" + result + "}";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

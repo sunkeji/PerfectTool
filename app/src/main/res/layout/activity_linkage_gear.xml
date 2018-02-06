@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +11,8 @@
         android:textColor="@color/text_color"
         android:textSize="@dimen/sp20" />
 
-    <com.skj.wheel.definedview.selector.WheelView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <com.skj.wheel.definedview.ShSwitchView
+        android:layout_width="@dimen/x100"
+        android:layout_height="@dimen/x50"
+        app:tintColor="@color/main_color" />
 </android.support.constraint.ConstraintLayout>
