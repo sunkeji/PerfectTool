@@ -6,15 +6,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.skj.wheel.BaseActivity;
 import com.skj.wheel.R;
 import com.skj.wheel.album.utils.Bimp;
-import com.skj.wheel.album.utils.CacheActivityUtil;
 import com.skj.wheel.album.utils.ViewPagerFixed;
 import com.skj.wheel.gestures.PhotoView;
 
@@ -24,26 +22,31 @@ import java.util.ArrayList;
  * Created by 孙科技 on 2017/7/17.
  */
 
-public class ViewGalleryActivity extends AppCompatActivity implements View.OnClickListener {
-    private RelativeLayout back, other;
-    private TextView title;
+public class AlbumVPFixedActivity extends BaseActivity implements View.OnClickListener {
+    //标题栏
+    private TextView back, other, title;
+    //展示图片放大
+    private ArrayList<View> listViews = null;
+    private ViewPagerFixed pager;
+    private MyPageAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CacheActivityUtil.addActivity(this);
         initView();
         initData();
     }
 
     private void initView() {
-        setContentView(R.layout.plugin_camera_gallery);// 切屏到主界面
-        back = (RelativeLayout) findViewById(R.id.back);
-        other = (RelativeLayout) findViewById(R.id.other);
-        title = (TextView) findViewById(R.id.title);
+        setContentView(R.layout.album_viewpager_fixed_activity);// 切屏到主界面
+        back = this.findViewById(R.id.bar_tv_back);
+        title = this.findViewById(R.id.bar_tv_title);
+        other = this.findViewById(R.id.bar_tv_other);
+
         // 为发送按钮设置文字
-        pager = (ViewPagerFixed) findViewById(R.id.gallery01);
+        pager = findViewById(R.id.viewpager_fixed);
         pager.setOnPageChangeListener(pageChangeListener);
+        setStatusBar();
 
         for (int i = 0; i < Bimp.tempSelectBitmap.size(); i++) {
             initListViews(Bimp.tempSelectBitmap.get(i).getBitmap());
@@ -66,9 +69,9 @@ public class ViewGalleryActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.back) {
+        if (i == R.id.bar_tv_back) {
             finish();
-        } else if (i == R.id.other) {
+        } else if (i == R.id.bar_tv_other) {
             if (listViews.size() == 1) {
                 Bimp.tempSelectBitmap.clear();
                 Bimp.max = 0;
@@ -90,11 +93,6 @@ public class ViewGalleryActivity extends AppCompatActivity implements View.OnCli
 
     // 当前的位置
     private int location = 0;
-
-    private ArrayList<View> listViews = null;
-    private ViewPagerFixed pager;
-    private MyPageAdapter adapter;
-
     private ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
 
         public void onPageSelected(int arg0) {

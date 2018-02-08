@@ -97,4 +97,16 @@
         <attr name="outerStrokeWidth" format="reference|dimension" />
         <attr name="shadowSpace" format="reference|dimension" />
     </declare-styleable>
+
+    <!--  自定义radiobutton和radiobutton组-->
+    <declare-styleable name="MyRBView">
+        <attr name="rb_title" format="reference|string" />
+        <attr name="rb_logo" format="reference|color" />
+        <attr name="rb_sign" format="reference|integer" />
+        <attr name="rb_checked" format="boolean" />
+        <attr name="rb_radio" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="MyRidioGroup">
+        <attr name="checkedButton" format="integer" />
+    </declare-styleable>
 </resources>

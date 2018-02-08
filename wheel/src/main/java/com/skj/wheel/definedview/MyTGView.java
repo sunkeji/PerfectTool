@@ -33,6 +33,9 @@ import com.skj.wheel.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 自定义标签
+ */
 public class MyTGView extends ViewGroup {
     private final int default_border_color = Color.rgb(0x49, 0xC1, 0x20);
     private final int default_text_color = Color.rgb(0x49, 0xC1, 0x20);

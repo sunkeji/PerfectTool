@@ -32,6 +32,7 @@ import com.skj.wheel.R;
 
 /**
  * Created by 孙科技 on 2017/11/9.
+ * 密码框
  */
 
 public class GridPasswordView extends LinearLayout implements PasswordView {
@@ -146,7 +147,7 @@ public class GridPasswordView extends LinearLayout implements PasswordView {
 
         int index = 1;
         while (index < mPasswordLength) {
-            View dividerView = inflater.inflate(R.layout.divider, null);
+            View dividerView = inflater.inflate(R.layout.gp_divider_view, null);
             LayoutParams dividerParams = new LayoutParams(mLineWidth, LayoutParams.MATCH_PARENT);
             dividerView.setBackgroundDrawable(mLineDrawable);
             addView(dividerView, dividerParams);

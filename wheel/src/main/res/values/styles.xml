@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">t</item>
     </style>
 
     <style name="AnimBottom" parent="@android:style/Animation">
@@ -32,6 +33,22 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <!-- view 画一条线 -->
+    <style name="line_horizontal_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/x1</item>
+        <item name="android:background">@color/line_color</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="line_vertical_style">
+        <item name="android:layout_width">@dimen/x1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/line_color</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- 自定义标签 -->
     <style name="TagGroup">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

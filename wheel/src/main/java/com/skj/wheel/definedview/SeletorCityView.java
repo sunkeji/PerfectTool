@@ -19,6 +19,7 @@ import java.util.Map;
 
 /**
  * Created by 孙科技 on 2018/2/5.
+ * 滑轮联动省市区选择器
  */
 
 public class SeletorCityView {

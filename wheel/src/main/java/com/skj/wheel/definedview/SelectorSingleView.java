@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 /**
  * Created by 孙科技 on 2018/2/5.
+ * 滑轮联动单列选择器
  */
 
 public class SelectorSingleView {

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/x50"
+    android:background="@color/main_color"
+    android:gravity="bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x50"
+            android:background="@color/bar_color">
+
+            <TextView
+                android:id="@+id/bar_tv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/nav_back_n"
+                android:drawablePadding="@dimen/x15"
+                android:gravity="center_vertical" />
+
+
+            <TextView
+                android:id="@+id/bar_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/sp17" />
+
+            <TextView
+                android:id="@+id/bar_tv_other"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:drawablePadding="@dimen/x5"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x15"
+                android:paddingRight="@dimen/x15"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/sp15"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View style="@style/line_horizontal_style" />
+    </LinearLayout>
+</RelativeLayout>

@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -19,15 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.skj.wheel.BaseActivity;
 import com.skj.wheel.R;
-import com.skj.wheel.album.adapter.AlbumGridViewAdapter;
+import com.skj.wheel.album.adapter.AlbumAdapter;
 import com.skj.wheel.album.utils.AlbumHelper;
 import com.skj.wheel.album.utils.Bimp;
-import com.skj.wheel.album.utils.CacheActivityUtil;
 import com.skj.wheel.album.utils.ImageBucket;
 import com.skj.wheel.album.utils.ImageItem;
-import com.skj.wheel.album.utils.IntentUtil;
 import com.skj.wheel.album.utils.PublicWay;
+import com.skj.wheel.util.IntentUtil;
+import com.skj.wheel.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,16 +38,18 @@ import java.util.Map;
  * Created by 孙科技 on 2017/7/17.
  */
 
-public class AlbumActivity extends AppCompatActivity implements View.OnClickListener {
+public class AlbumAllActivity extends BaseActivity implements View.OnClickListener {
+    //标题栏
+    private TextView back, other, title;
     // 显示手机里的所有图片的列表控件
     private GridView gridView;
+    private AlbumAdapter gridImageAdapter;
     // 当手机里没有图片时，提示用户没有图片的控件
-    private TextView tv;
-    // gridView的adapter
-    private AlbumGridViewAdapter gridImageAdapter;
-    private TextView back, other, title;
-    private TextView preview, okNum;
-    private LinearLayout okLayout;
+    private TextView textEmpty;
+    //预览、完成栏
+    private TextView preview, selectNum;
+    private LinearLayout layoutOk;
+    //图片管理
     private ArrayList<ImageItem> dataList;
     private AlbumHelper helper;
     public static List<ImageBucket> contentList;
@@ -56,7 +58,6 @@ public class AlbumActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CacheActivityUtil.addActivity(this);
         helper = AlbumHelper.getHelper();
         helper.init(getApplicationContext());
         initView();
@@ -64,27 +65,32 @@ public class AlbumActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
-        setContentView(R.layout.activity_album);
-        back = (TextView) findViewById(R.id.back);
-        title = (TextView) findViewById(R.id.title);
-        other = (TextView) findViewById(R.id.other);
-        preview = (TextView) findViewById(R.id.preview);
-        okNum = (TextView) findViewById(R.id.ok_buttonnum);
-        okLayout = (LinearLayout) findViewById(R.id.ok_buttonlayout);
+        setContentView(R.layout.album_main_acitivty);
 
-        gridView = (GridView) findViewById(R.id.myGrid);
+        back = this.findViewById(R.id.bar_tv_back);
+        title = this.findViewById(R.id.bar_tv_title);
+        other = this.findViewById(R.id.bar_tv_other);
 
-        tv = (TextView) findViewById(R.id.myText);
-        gridView.setEmptyView(tv);
+        preview = this.findViewById(R.id.text_preview);
+        selectNum = this.findViewById(R.id.text_select);
+        layoutOk = this.findViewById(R.id.layout_ok);
 
-        okNum.setText(Bimp.tempSelectBitmap.size() + "");
+        gridView = this.findViewById(R.id.grid_list);
+        textEmpty = this.findViewById(R.id.text_empty);
+
+        setStatusBar();
+
+        gridView.setEmptyView(textEmpty);
+        selectNum.setText(Bimp.tempSelectBitmap.size() + "");
         other.setVisibility(View.VISIBLE);
         other.setText("相册");
         title.setText("全部图片");
+
+
         other.setOnClickListener(this);
         back.setOnClickListener(this);
         preview.setOnClickListener(this);
-        okLayout.setOnClickListener(this);
+        layoutOk.setOnClickListener(this);
     }
 
     private void initData() {
@@ -94,7 +100,7 @@ public class AlbumActivity extends AppCompatActivity implements View.OnClickList
         registerReceiver(broadcastReceiver, filter);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.plugin_camera_no_pictures);
 
-        okNum.setText(Bimp.tempSelectBitmap.size() + "");
+        selectNum.setText(Bimp.tempSelectBitmap.size() + "");
     }
 
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -108,19 +114,20 @@ public class AlbumActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.back) {
+        if (i == R.id.bar_tv_back) {
+            Bimp.tempSelectBitmap.clear();
             finish();
-        } else if (i == R.id.other) {
-            IntentUtil.startActivity(this, ImageFileActivity.class, null);
-        } else if (i == R.id.preview) {
+        } else if (i == R.id.bar_tv_other) {
+            IntentUtil.startActivity(activity, AlbumFolderActivity.class);
+        } else if (i == R.id.text_preview) {
             if (Bimp.tempSelectBitmap.size() > 0) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("position", "1");
-                IntentUtil.startActivity(this, ViewGalleryActivity.class, map);
+                IntentUtil.startActivity(activity, AlbumVPFixedActivity.class, map);
             } else {
-                Toast.makeText(this, "您未选择图片！", Toast.LENGTH_SHORT);
+                ToastUtil.TextToast("您未选择图片");
             }
-        } else if (i == R.id.ok_buttonlayout) {
+        } else if (i == R.id.layout_ok) {
             finish();
         }
     }
@@ -137,10 +144,10 @@ public class AlbumActivity extends AppCompatActivity implements View.OnClickList
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        gridImageAdapter = new AlbumGridViewAdapter(AlbumActivity.this, dataList,
+                        gridImageAdapter = new AlbumAdapter(AlbumAllActivity.this, dataList,
                                 Bimp.tempSelectBitmap);
                         gridView.setAdapter(gridImageAdapter);
-                        gridImageAdapter.setOnItemClickListener(new AlbumGridViewAdapter.OnItemClickListener() {
+                        gridImageAdapter.setOnItemClickListener(new AlbumAdapter.OnItemClickListener() {
                             @Override
                             public void onItemClick(final ToggleButton toggleButton, int position, boolean isChecked,
                                                     Button chooseBt) {
@@ -148,20 +155,20 @@ public class AlbumActivity extends AppCompatActivity implements View.OnClickList
                                     toggleButton.setChecked(false);
                                     chooseBt.setVisibility(View.GONE);
                                     if (!removeOneData(dataList.get(position))) {
-                                        Toast.makeText(AlbumActivity.this, R.string.only_choose_num, Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(AlbumAllActivity.this, R.string.only_choose_num, Toast.LENGTH_SHORT).show();
                                     }
                                     return;
                                 }
                                 if (isChecked) {
                                     chooseBt.setVisibility(View.VISIBLE);
                                     Bimp.tempSelectBitmap.add(dataList.get(position));
-                                    okNum.setText(Bimp.tempSelectBitmap.size() + "");
+                                    selectNum.setText(Bimp.tempSelectBitmap.size() + "");
                                 } else {
                                     Bimp.tempSelectBitmap.remove(dataList.get(position));
                                     chooseBt.setVisibility(View.GONE);
-                                    okNum.setText(Bimp.tempSelectBitmap.size() + "");
+                                    selectNum.setText(Bimp.tempSelectBitmap.size() + "");
                                 }
-                                okNum.setText(Bimp.tempSelectBitmap.size() + "");
+                                selectNum.setText(Bimp.tempSelectBitmap.size() + "");
                             }
                         });
                     }
@@ -173,7 +180,7 @@ public class AlbumActivity extends AppCompatActivity implements View.OnClickList
     private boolean removeOneData(ImageItem imageItem) {
         if (Bimp.tempSelectBitmap.contains(imageItem)) {
             Bimp.tempSelectBitmap.remove(imageItem);
-            okNum.setText(Bimp.tempSelectBitmap.size() + "");
+            selectNum.setText(Bimp.tempSelectBitmap.size() + "");
             return true;
         }
         return false;
@@ -181,7 +188,7 @@ public class AlbumActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onResume() {
-        okNum.setText(Bimp.tempSelectBitmap.size() + "");
+        selectNum.setText(Bimp.tempSelectBitmap.size() + "");
         super.onResume();
     }
 

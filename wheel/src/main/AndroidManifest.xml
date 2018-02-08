@@ -7,10 +7,10 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <activity android:name=".album.activity.AlbumActivity" />
-        <activity android:name=".album.activity.ImageFileActivity" />
-        <activity android:name=".album.activity.ShowAllPhotoActivity" />
-        <activity android:name=".album.activity.ViewGalleryActivity" />
+        <activity android:name=".album.activity.AlbumAllActivity" />
+        <activity android:name=".album.activity.AlbumFolderActivity" />
+        <activity android:name=".album.activity.AlbumFloderImageActivity" />
+        <activity android:name=".album.activity.AlbumVPFixedActivity" />
     </application>
 
 </manifest>

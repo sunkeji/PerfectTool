@@ -6,22 +6,22 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.skj.wheel.BaseActivity;
 import com.skj.wheel.R;
-import com.skj.wheel.album.adapter.AlbumGridViewAdapter;
+import com.skj.wheel.album.adapter.AlbumAdapter;
 import com.skj.wheel.album.utils.Bimp;
-import com.skj.wheel.album.utils.CacheActivityUtil;
 import com.skj.wheel.album.utils.ImageItem;
-import com.skj.wheel.album.utils.IntentUtil;
 import com.skj.wheel.album.utils.PublicWay;
+import com.skj.wheel.util.ActivityListUtil;
+import com.skj.wheel.util.IntentUtil;
+import com.skj.wheel.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,38 +31,47 @@ import java.util.Map;
  * Created by 孙科技 on 2017/7/17.
  */
 
-public class ShowAllPhotoActivity extends AppCompatActivity implements View.OnClickListener {
+public class AlbumFloderImageActivity extends BaseActivity implements View.OnClickListener {
 
+
+    //标题栏
+    private TextView back, other, title;
+    // 显示手机里的所有图片的列表控件
     private GridView gridView;
-    private AlbumGridViewAdapter gridImageAdapter;
+    private AlbumAdapter gridImageAdapter;
+    // 当手机里没有图片时，提示用户没有图片的控件
+    private TextView textEmpty;
+    //预览、完成栏
+    private TextView preview, selectNum;
+    private LinearLayout layoutOk;
+    //图片管理
     public static ArrayList<ImageItem> dataList = new ArrayList<ImageItem>();
 
-    private TextView back, other, title, tv;
-    private TextView preview, okNum;
-    private LinearLayout okLayout;
-    private Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CacheActivityUtil.addActivity(this);
         initView();
         initData();
     }
 
     private void initView() {
-        setContentView(R.layout.activity_album);
+        setContentView(R.layout.album_main_acitivty);
 
-        back = (TextView) findViewById(R.id.back);
-        other = (TextView) findViewById(R.id.other);
-        preview = (TextView) findViewById(R.id.preview);
-        okNum = (TextView) findViewById(R.id.ok_buttonnum);
-        okLayout = (LinearLayout) findViewById(R.id.ok_buttonlayout);
-        title = (TextView) findViewById(R.id.title);
-        tv = (TextView) findViewById(R.id.myText);
-        gridView = (GridView) findViewById(R.id.myGrid);
-        this.intent = getIntent();
-        String folderName = intent.getStringExtra("folderName");
+        back = this.findViewById(R.id.bar_tv_back);
+        title = this.findViewById(R.id.bar_tv_title);
+        other = this.findViewById(R.id.bar_tv_other);
+
+        preview = this.findViewById(R.id.text_preview);
+        selectNum = this.findViewById(R.id.text_select);
+        layoutOk = this.findViewById(R.id.layout_ok);
+
+        gridView = this.findViewById(R.id.grid_list);
+        textEmpty = this.findViewById(R.id.text_empty);
+
+        setStatusBar();
+
+        String folderName = getIntent().getStringExtra("folderName");
         if (!folderName.equals("")) {
             if (folderName.length() > 8) {
                 folderName = folderName.substring(0, 9) + "...";
@@ -70,36 +79,36 @@ public class ShowAllPhotoActivity extends AppCompatActivity implements View.OnCl
             title.setText(folderName);
         }
 
-        gridImageAdapter = new AlbumGridViewAdapter(this, dataList, Bimp.tempSelectBitmap);
+        gridImageAdapter = new AlbumAdapter(this, dataList, Bimp.tempSelectBitmap);
         gridView.setAdapter(gridImageAdapter);
-        gridView.setEmptyView(tv);
-        okNum.setText(Bimp.tempSelectBitmap.size() + "");
+        gridView.setEmptyView(textEmpty);
+        selectNum.setText(Bimp.tempSelectBitmap.size() + "");
         other.setVisibility(View.VISIBLE);
         other.setText("取消");
 
         other.setOnClickListener(this);
         back.setOnClickListener(this);
         preview.setOnClickListener(this);
-        okLayout.setOnClickListener(this);
-        gridImageAdapter.setOnItemClickListener(new AlbumGridViewAdapter.OnItemClickListener() {
+        layoutOk.setOnClickListener(this);
+        gridImageAdapter.setOnItemClickListener(new AlbumAdapter.OnItemClickListener() {
             public void onItemClick(final ToggleButton toggleButton, int position, boolean isChecked, Button button) {
                 if (Bimp.tempSelectBitmap.size() >= PublicWay.num && isChecked) {
                     button.setVisibility(View.GONE);
                     toggleButton.setChecked(false);
-                    Toast.makeText(ShowAllPhotoActivity.this, "超出可选图片张数", 2000);
+                    ToastUtil.TextToast("超出可选图片张数");
                     return;
                 }
 
                 if (isChecked) {
                     button.setVisibility(View.VISIBLE);
                     Bimp.tempSelectBitmap.add(dataList.get(position));
-                    okNum.setText(Bimp.tempSelectBitmap.size() + "");
+                    selectNum.setText(Bimp.tempSelectBitmap.size() + "");
                 } else {
                     button.setVisibility(View.GONE);
                     Bimp.tempSelectBitmap.remove(dataList.get(position));
-                    okNum.setText(Bimp.tempSelectBitmap.size() + "");
+                    selectNum.setText(Bimp.tempSelectBitmap.size() + "");
                 }
-                okNum.setText(Bimp.tempSelectBitmap.size() + "");
+                selectNum.setText(Bimp.tempSelectBitmap.size() + "");
             }
         });
 
@@ -121,28 +130,33 @@ public class ShowAllPhotoActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.back) {
+        if (i == R.id.bar_tv_back) {
             finish();
-        } else if (i == R.id.other) {
-            CacheActivityUtil.finishOtherActivity(ShowAllPhotoActivity.class);
-            finish();
-        } else if (i == R.id.preview) {
+        } else if (i == R.id.bar_tv_other) {
+            Bimp.tempSelectBitmap.clear();
+            ActivityListUtil.finishAllActivity();
+        } else if (i == R.id.text_preview) {
             if (Bimp.tempSelectBitmap.size() > 0) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("position", "1");
-                IntentUtil.startActivity(this, ViewGalleryActivity.class, map);
+                IntentUtil.startActivity(activity, AlbumVPFixedActivity.class, map);
             } else {
-                Toast.makeText(this, "您未选择图片！", 2000);
+                ToastUtil.TextToast("您未选择图片");
             }
-        } else if (i == R.id.ok_buttonlayout) {
-            CacheActivityUtil.finishOtherActivity(ShowAllPhotoActivity.class);
-            finish();
+        } else if (i == R.id.layout_ok) {
+            ActivityListUtil.finishAllActivity();
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        okNum.setText(Bimp.tempSelectBitmap.size() + "");
+        selectNum.setText(Bimp.tempSelectBitmap.size() + "");
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(broadcastReceiver);
+        super.onDestroy();
     }
 }

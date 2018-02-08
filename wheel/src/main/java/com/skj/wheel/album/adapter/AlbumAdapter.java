@@ -23,7 +23,7 @@ import java.util.ArrayList;
 /**
  * 这个是显示一个文件夹里面的所有图片时用的适配器
  */
-public class AlbumGridViewAdapter extends BaseAdapter {
+public class AlbumAdapter extends BaseAdapter {
     final String TAG = getClass().getSimpleName();
     private Context mContext;
     private ArrayList<ImageItem> dataList;
@@ -31,7 +31,7 @@ public class AlbumGridViewAdapter extends BaseAdapter {
     private DisplayMetrics dm;
     private BitmapCache cache;
 
-    public AlbumGridViewAdapter(Context c, ArrayList<ImageItem> dataList, ArrayList<ImageItem> selectedDataList) {
+    public AlbumAdapter(Context c, ArrayList<ImageItem> dataList, ArrayList<ImageItem> selectedDataList) {
         mContext = c;
         cache = new BitmapCache();
         this.dataList = dataList;
@@ -81,10 +81,10 @@ public class AlbumGridViewAdapter extends BaseAdapter {
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.plugin_camera_select_imageview, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.album_select_imageview_item, parent, false);
             viewHolder.imageView = (ImageView) convertView.findViewById(R.id.image_view);
             viewHolder.toggleButton = (ToggleButton) convertView.findViewById(R.id.toggle_button);
-            viewHolder.choosetoggle = (Button) convertView.findViewById(R.id.choosedbt);
+            viewHolder.choosetoggle = (Button) convertView.findViewById(R.id.btn_choose);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();

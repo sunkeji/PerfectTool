@@ -1,13 +1,15 @@
-package com.skj.wheel.album.utils;
+package com.skj.wheel.util;
 
 import android.app.Activity;
 import android.content.Intent;
+
+import com.skj.wheel.R;
 
 import java.io.Serializable;
 import java.util.Map;
 
 /**
- * Created by 孙科技 on 2017/4/26.
+ * Created by 孙科技 on 2018/2/7.
  */
 
 public class IntentUtil {
@@ -16,10 +18,12 @@ public class IntentUtil {
      *
      * @param activity
      * @param activityClazz
-     * @param param
      */
-    public static void startActivity(Activity activity,
-                                     Class activityClazz, Map<String, Object> param) {
+    public static void startActivity(Activity activity, Class activityClazz) {
+        startActivity(activity, activityClazz, null);
+    }
+
+    public static void startActivity(Activity activity, Class activityClazz, Map<String, Object> param) {
         Intent intent = new Intent(activity, activityClazz);
         if (param != null && !param.isEmpty()) {
             for (Map.Entry<String, Object> entry : param.entrySet()) {
@@ -43,6 +47,7 @@ public class IntentUtil {
             }
         }
         activity.startActivity(intent);
+        activity.overridePendingTransition(R.anim.slide_right_in, R.anim.slide_left_out);
     }
 
     /**
@@ -50,10 +55,13 @@ public class IntentUtil {
      *
      * @param activity
      * @param activityClazz
-     * @param param
+     * @param reqCode
      */
-    public static void startActivity(Activity activity,
-                                     Class activityClazz, Map<String, Object> param, int reqCode) {
+    public static void startActivity(Activity activity, Class activityClazz, int reqCode) {
+        startActivity(activity, activityClazz, null, reqCode);
+    }
+
+    public static void startActivity(Activity activity, Class activityClazz, Map<String, Object> param, int reqCode) {
         Intent intent = new Intent(activity, activityClazz);
         if (param != null && !param.isEmpty()) {
             for (Map.Entry<String, Object> entry : param.entrySet()) {
@@ -77,5 +85,11 @@ public class IntentUtil {
             }
         }
         activity.startActivityForResult(intent, reqCode);
+        activity.overridePendingTransition(R.anim.slide_right_in, R.anim.slide_left_out);
+    }
+
+    public static void backActivity(Activity activity) {
+        activity.finish();
+        activity.overridePendingTransition(R.anim.slide_left_in, R.anim.slide_right_out);
     }
 }

@@ -104,22 +104,27 @@ public class ToastUtil {
      */
     public static void ImageToast(int ImageResourceId,
                                   CharSequence text) {
+        ImageToast(ImageResourceId, text, 1);
+    }
+
+    public static void ImageToast(int ImageResourceId,
+                                  CharSequence text, int orientation) {
         // 创建一个Toast提示消息
         toast = Toast.makeText(MyApplication.mContext, text, Toast.LENGTH_LONG);
+
         // 设置Toast提示消息在屏幕上的位置
         toast.setGravity(Gravity.CENTER, 0, 0);
         // 获取Toast提示消息里原有的View
-        View toastView = toast.getView();
+        LinearLayout toastView = (LinearLayout) toast.getView();
         // 创建一个ImageView
         ImageView img = new ImageView(MyApplication.mContext);
         img.setImageResource(ImageResourceId);
+        img.setPadding(0, 20, 0, 20);
         // 创建一个LineLayout容器
-        LinearLayout ll = new LinearLayout(MyApplication.mContext);
         // 向LinearLayout中添加ImageView和Toast原有的View
-        ll.addView(img);
-        ll.addView(toastView);
+        toastView.setOrientation(orientation);
+        toastView.addView(img, 0);
         // 将LineLayout容器设置为toast的View
-        toast.setView(ll);
         // 显示消息
         toast.show();
     }

@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
-import com.skj.wheel.album.activity.AlbumActivity;
+import com.skj.wheel.album.activity.AlbumAllActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -73,7 +73,7 @@ public class CollapsingActivity extends AppCompatActivity {
 
     @OnClick(R.id.text_content)
     public void onViewClicked() {
-        Intent intent = new Intent(CollapsingActivity.this, AlbumActivity.class);
+        Intent intent = new Intent(CollapsingActivity.this, AlbumAllActivity.class);
         startActivity(intent);
     }
 }

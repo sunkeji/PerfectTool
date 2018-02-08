@@ -19,7 +19,9 @@ import android.view.animation.DecelerateInterpolator;
 
 import com.skj.wheel.R;
 
-
+/**
+ * 滑动按钮
+ */
 public class ShSwitchView extends View {
 
     private static final long commonDuration = 300L;

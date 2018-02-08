@@ -16,6 +16,9 @@ import com.skj.wheel.R;
 import java.util.Set;
 import java.util.TreeMap;
 
+/**
+ * 字母列表栏
+ */
 public class SideLetterBarView extends View {
     private String[] b = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     private int choose = -1;

@@ -9,6 +9,7 @@ import java.util.Date;
 
 /**
  * Created by 孙科技 on 2018/2/5.
+ * 滑轮联动日期选择器
  */
 
 public class SelectorDateView {
