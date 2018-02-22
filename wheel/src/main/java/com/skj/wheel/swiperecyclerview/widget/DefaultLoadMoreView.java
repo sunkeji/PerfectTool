@@ -27,7 +27,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.skj.wheel.swiperecyclerview.SwipeMenuRecyclerView;
 import com.skj.wheel.swiperecyclerview.loading.LoadingView;
 import com.skj.wheel.R;
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.skj.wheel.swiperecyclerview;
+package com.skj.wheel.swiperecyclerview.widget;
 
 import android.content.Context;
 import android.support.annotation.IntDef;
@@ -32,7 +32,6 @@ import com.skj.wheel.swiperecyclerview.touch.DefaultItemTouchHelper;
 import com.skj.wheel.swiperecyclerview.touch.OnItemMoveListener;
 import com.skj.wheel.swiperecyclerview.touch.OnItemMovementListener;
 import com.skj.wheel.swiperecyclerview.touch.OnItemStateChangedListener;
-import com.skj.wheel.swiperecyclerview.widget.DefaultLoadMoreView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

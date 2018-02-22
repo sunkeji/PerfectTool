@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/x15"
-            app:atg_background="@drawable/corners_bgall_color2"
+            app:atg_background="@drawable/corners_bgall_color"
             app:atg_borderColor="@color/transparent"
             app:atg_checkedBackgroundColor="@color/tag_bg_color1"
             app:atg_checkedTextColor="@color/main_color"

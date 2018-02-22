@@ -152,7 +152,7 @@ public class GridPasswordView extends LinearLayout implements PasswordView {
             dividerView.setBackgroundDrawable(mLineDrawable);
             addView(dividerView, dividerParams);
 
-            TextView textView = (TextView) inflater.inflate(R.layout.textview, null);
+            TextView textView = (TextView) inflater.inflate(R.layout.layout_gridpassword_textview, null);
             setCustomAttr(textView);
             LayoutParams textViewParams = new LayoutParams(0, LayoutParams.MATCH_PARENT, 1f);
             addView(textView, textViewParams);

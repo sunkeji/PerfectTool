@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:adjustViewBounds="true"
-        android:background="@drawable/plugin_camera_no_pictures"
+        android:background="@mipmap/plugin_camera_no_pictures"
         android:scaleType="centerCrop" />
 
     <RelativeLayout
@@ -31,7 +31,7 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/plugin_camera_choosed"
+            android:background="@mipmap/plugin_camera_choosed"
             android:visibility="gone" />
     </RelativeLayout>
 

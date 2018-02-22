@@ -98,7 +98,7 @@ public class AlbumAllActivity extends BaseActivity implements View.OnClickListen
         // 注册一个广播，这个广播主要是用于在GalleryActivity进行预览时，防止当所有图片都删除完后，再回到该页面时被取消选中的图片仍处于选中状态
         IntentFilter filter = new IntentFilter("data.broadcast.action");
         registerReceiver(broadcastReceiver, filter);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.plugin_camera_no_pictures);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.plugin_camera_no_pictures);
 
         selectNum.setText(Bimp.tempSelectBitmap.size() + "");
     }

@@ -86,7 +86,7 @@ public class BitmapCache {
                 }
                 if (thumb == null) {
                     thumb = BitmapFactory.decodeResource(
-                            context.getResources(), R.drawable.add_imageview);
+                            context.getResources(), R.mipmap.add_imageview);
                 }
                 put(path, thumb);
 

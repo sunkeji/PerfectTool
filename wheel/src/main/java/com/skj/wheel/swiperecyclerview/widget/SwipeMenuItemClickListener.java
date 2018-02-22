@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.skj.wheel.swiperecyclerview;
+package com.skj.wheel.swiperecyclerview.widget;
 
 /**
  * Created by Yan Zhenjie on 2016/7/26.

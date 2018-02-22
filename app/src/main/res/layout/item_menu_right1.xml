@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.skj.wheel.swiperecyclerview.SwipeMenuLayout
+        android:id="@+id/swipeMenuLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:contentId="@+id/content_view"
+        app:leftMenuId="@+id/left_menu"
+        app:rightMenuId="@+id/right_menu">
+
+        <LinearLayout
+            android:id="@+id/left_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_blue_dark"
+                android:gravity="center"
+                android:text="LeftMenu"
+                android:textColor="@android:color/white">
+
+            </TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/content_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <include layout="@layout/item_shop_cart" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/right_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="#D9DEE4"
+                android:gravity="center"
+                android:text="Top"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/tv_add"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="#ECD50A"
+                android:gravity="center"
+                android:text="Add"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_delete"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="#FF4A57"
+                android:gravity="center"
+                android:text="Delete"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </com.skj.wheel.swiperecyclerview.SwipeMenuLayout>
+
+</LinearLayout>

@@ -95,7 +95,7 @@ public class AlbumAdapter extends BaseAdapter {
         else
             path = "camera_default";
         if (path.contains("camera_default")) {
-            viewHolder.imageView.setImageResource(R.drawable.plugin_camera_no_pictures);
+            viewHolder.imageView.setImageResource(R.mipmap.plugin_camera_no_pictures);
         } else {
             final ImageItem item = dataList.get(position);
             viewHolder.imageView.setTag(item.imagePath);

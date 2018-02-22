@@ -26,8 +26,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 
-import com.skj.wheel.swiperecyclerview.SwipeMenuRecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 

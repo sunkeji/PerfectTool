@@ -102,7 +102,7 @@ public class AlbumFolderAdapter extends BaseAdapter {
             path = "android_hybrid_camera_default";
 
         if (path.contains("android_hybrid_camera_default"))
-            holder.imageView.setImageResource(R.drawable.plugin_camera_no_pictures);
+            holder.imageView.setImageResource(R.mipmap.plugin_camera_no_pictures);
         else {
             // holder.imageView.setImageBitmap(
             // AlbumAllActivity.contentList.get(position).imageList.get(0).getBitmap());

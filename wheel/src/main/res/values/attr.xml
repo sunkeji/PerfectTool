@@ -109,4 +109,15 @@
     <declare-styleable name="MyRidioGroup">
         <attr name="checkedButton" format="integer" />
     </declare-styleable>
+    <!-- recyclerview的属性 -->
+    <declare-styleable name="MyRecyclerView">
+        <attr name="orientation" format="integer" />
+        <attr name="type" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="SwipeMenuLayout">
+        <attr name="leftMenuId" format="integer" />
+        <attr name="rightMenuId" format="integer" />
+        <attr name="contentId" format="integer" />
+    </declare-styleable>
 </resources>

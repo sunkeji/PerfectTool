@@ -71,7 +71,7 @@
                     android:id="@+id/text_select"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
-                    android:background="@drawable/plugin_camera_ok_btn_state"
+                    android:background="@mipmap/plugin_camera_ok_btn_state"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="13sp" />

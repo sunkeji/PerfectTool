@@ -21,6 +21,10 @@ public class LogUtil {
         e("result:", msg + "", isDebug);
     }
 
+    public static void e(String tag, String msg) {
+        e(tag, msg + "", true);
+    }
+
     public static void e(String tag, String msg, boolean isDebug) {
         if (isDebug) {
             Log.e(Prefix + tag, msg + "");
@@ -33,6 +37,10 @@ public class LogUtil {
 
     public static void i(String msg, boolean isDebug) {
         i("result:", msg + "", isDebug);
+    }
+
+    public static void i(String tag, String msg) {
+        i(tag, msg + "", true);
     }
 
     public static void i(String tag, String msg, boolean isDebug) {
@@ -56,6 +64,10 @@ public class LogUtil {
 
     public static void d(String msg, boolean isDebug) {
         d("result:", msg + "", isDebug);
+    }
+
+    public static void d(String tag, String msg) {
+        d(tag, msg + "", true);
     }
 
     public static void d(String tag, String msg, boolean isDebug) {

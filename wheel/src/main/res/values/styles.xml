@@ -6,7 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="windowNoTitle">t</item>
+        <item name="android:listDivider">@drawable/recyler_divider</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="AnimBottom" parent="@android:style/Animation">
@@ -54,7 +55,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="atg_isAppendMode">false</item>
         <item name="atg_borderColor">@color/transparent</item>
-        <item name="atg_background">@drawable/corners_bgall_color2</item>
+        <item name="atg_background">@drawable/corners_bgall_color</item>
         <item name="atg_textColor">#49C120</item>
         <item name="atg_backgroundColor">@color/transparent</item>
         <item name="atg_dashBorderColor">#AAAAAA</item>

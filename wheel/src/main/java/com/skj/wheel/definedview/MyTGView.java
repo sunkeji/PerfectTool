@@ -46,7 +46,7 @@ public class MyTGView extends ViewGroup {
     private final int default_checked_border_color = Color.rgb(0x49, 0xC1, 0x20);
     private final int default_checked_text_color = Color.WHITE;
     private final int default_checked_marker_color = Color.WHITE;
-    private final int default_background = R.drawable.corners_bgall_color2;
+    private final int default_background = R.drawable.corners_bgall_color;
     private final int default_checked_background_color = Color.rgb(0x49, 0xC1, 0x20);
     private final int default_pressed_background_color = Color.rgb(0xED, 0xED, 0xED);
     private final float default_border_stroke_width;
