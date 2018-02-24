@@ -1,4 +1,4 @@
-package com.skj.wheel.definedview.selector;
+package com.skj.wheel.definedview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

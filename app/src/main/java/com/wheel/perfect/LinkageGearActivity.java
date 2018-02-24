@@ -43,27 +43,31 @@ public class LinkageGearActivity extends AppCompatActivity {
         final TestAdapter adapter = new TestAdapter(mList);
         recyclerView.setAdapter(adapter);
 //        layoutView.setVisibility(View.VISIBLE);
-//        layoutView.showEmpty(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
+        layoutView.showEmpty(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
+        layoutView.showError(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
+        layoutView.showLoading(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
         swipeRefresh.setOnSwipeListener(new MySwipeRLView.OnSwipeListener() {
             @Override
             public void onRefresh() {
 
-//        for (int i = 0; i < 20; i++) {
-//            mList.add("卧室的多多多" + i);
-//        }
+
                 mList.clear();
-                mList.add("卧室多");
-                mList.add("卧室的多");
-                mList.add("卧多多");
-                mList.add("卧室");
-                mList.add("卧室的多多多");
-                mList.add("卧室的多多多卧室的多多多");
-                mList.add("卧室的多多多");
-                mList.add("卧室的多多多");
-                mList.add("卧室的多多多");
-                mList.add("卧室的多多多卧室的多多多卧室的多多多");
-                mList.add("卧室的多多多卧室的多多多卧室的多多多卧室的多多多");
+                for (int i = 0; i < 10; i++) {
+                    mList.add("卧室的多多多" + i);
+                }
                 adapter.updateList(mList);
+//                mList.add("卧室多");
+//                mList.add("卧室的多");
+//                mList.add("卧多多");
+//                mList.add("卧室");
+//                mList.add("卧室的多多多");
+//                mList.add("卧室的多多多卧室的多多多");
+//                mList.add("卧室的多多多");
+//                mList.add("卧室的多多多");
+//                mList.add("卧室的多多多");
+//                mList.add("卧室的多多多卧室的多多多卧室的多多多");
+//                mList.add("卧室的多多多卧室的多多多卧室的多多多卧室的多多多");
+
             }
         });
 
@@ -81,6 +85,9 @@ public class LinkageGearActivity extends AppCompatActivity {
                 mList.add("卧室的多多多");
                 mList.add("卧室的多多多卧室的多多多卧室的多多多");
                 mList.add("卧室的多多多卧室的多多多卧室的多多多卧室的多多多");
+                for (int i = 0; i < 10; i++) {
+                    mList.add("卧室的多多多" + i);
+                }
                 adapter.updateList(mList);
             }
         });

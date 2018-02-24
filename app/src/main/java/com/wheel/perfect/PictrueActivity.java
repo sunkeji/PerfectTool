@@ -14,8 +14,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.skj.wheel.album.activity.AlbumAllActivity;
+import com.skj.wheel.definedview.SelectorDateView;
+import com.skj.wheel.definedview.SelectorSingleView;
+import com.skj.wheel.definedview.SeletorCityView;
 import com.skj.wheel.definedview.SideLetterBarView;
 import com.skj.wheel.definedview.MyTGView;
+import com.skj.wheel.definedview.selector.TimePickerView;
+import com.skj.wheel.util.IntentUtil;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.FileNotFoundException;
@@ -52,7 +58,7 @@ public class PictrueActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
     }
-
+    List<String> stringList1;
     private TreeMap<String, Object> letterIndexes;
     String[] b = {"A", "B", "D", "E", "F", "H", "I", "K", "M", "N", "O", "P", "T", "U", "V", "W", "X", "Y", "Z"};
 
@@ -63,14 +69,14 @@ public class PictrueActivity extends AppCompatActivity {
             letterIndexes.put(b[index], index);
         }
         sideLetterBarView.setLetterList(letterIndexes);
-        textOverly.setVisibility(View.GONE);
+        textOverly.setVisibility(View.VISIBLE);
         sideLetterBarView.setOverlay(textOverly);
         sideLetterBarView.setOnLetterChangedListener(new SideLetterBarView.OnLetterChangedListener() {
             @Override
             public void onLetterChanged(String letter) {
             }
         });
-        List<String> stringList1 = new ArrayList<>();
+         stringList1 = new ArrayList<>();
 //        for (int i = 0; i < 10; i++) {
         stringList1.add("我是的基督教");
         stringList1.add("基督教");
@@ -80,6 +86,12 @@ public class PictrueActivity extends AppCompatActivity {
         stringList1.add("我是的基");
 //        }
         tgText1.setTags(stringList1);
+        SelectorDateView.alertTimerPicker(this, TimePickerView.Type.YEAR_MONTH_DAY, "yyyy-MM-dd", new SelectorDateView.TimerPickerCallBack() {
+            @Override
+            public void onTimeSelect(String date) {
+
+            }
+        });
     }
 
 
@@ -87,10 +99,23 @@ public class PictrueActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_carmera:
-                carmera();
+//                carmera();
+//                IntentUtil.startActivity(PictrueActivity.this, AlbumAllActivity.class);
+                SeletorCityView.getInstance().showOptions(this, new SeletorCityView.CitysPickerCallBack() {
+                    @Override
+                    public void onCitysSelect(String province, String city, String district, String cityCode) {
+
+                    }
+                });
                 break;
             case R.id.btn_image:
-                image();
+//                image();
+                SelectorSingleView.alertBottomWheelOption(this, (ArrayList<?>) stringList1, new SelectorSingleView.OnWheelViewClick() {
+                    @Override
+                    public void onClick(View view, int postion) {
+
+                    }
+                });
                 break;
         }
     }

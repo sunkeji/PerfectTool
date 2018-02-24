@@ -25,17 +25,17 @@
 
         </activity>
         <activity android:name=".PictrueActivity">
-
-        </activity>
-        <activity android:name=".SelectActivity">
-
-        </activity>
-        <activity android:name=".LinkageGearActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".SelectActivity">
+
+        </activity>
+        <activity android:name=".LinkageGearActivity">
+
         </activity>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"

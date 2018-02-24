@@ -43,6 +43,9 @@ public class AlbumVPFixedActivity extends BaseActivity implements View.OnClickLi
         title = this.findViewById(R.id.bar_tv_title);
         other = this.findViewById(R.id.bar_tv_other);
 
+        other.setText("删除");
+        other.setVisibility(View.VISIBLE);
+
         // 为发送按钮设置文字
         pager = findViewById(R.id.viewpager_fixed);
         pager.setOnPageChangeListener(pageChangeListener);
