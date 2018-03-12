@@ -3,8 +3,6 @@ package com.wheel.perfect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.view.View;
 
 import com.skj.wheel.definedview.LayoutView;
 import com.skj.wheel.swiperecyclerview.MyRecyclerView;
@@ -25,10 +23,10 @@ public class LinkageGearActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler_view)
     MyRecyclerView recyclerView;
-    @BindView(R.id.layout_view)
-    LayoutView layoutView;
     @BindView(R.id.swipe_refresh)
     MySwipeRLView swipeRefresh;
+    @BindView(R.id.layout_view)
+    LayoutView layoutView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,13 +41,12 @@ public class LinkageGearActivity extends AppCompatActivity {
         final TestAdapter adapter = new TestAdapter(mList);
         recyclerView.setAdapter(adapter);
 //        layoutView.setVisibility(View.VISIBLE);
-        layoutView.showEmpty(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
-        layoutView.showError(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
-        layoutView.showLoading(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
+//        layoutView.showEmpty(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
+//        layoutView.showError(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
+//        layoutView.showLoading(R.mipmap.ic_launcher_round, "搜索不到该相关商品！");
         swipeRefresh.setOnSwipeListener(new MySwipeRLView.OnSwipeListener() {
             @Override
             public void onRefresh() {
-
 
                 mList.clear();
                 for (int i = 0; i < 10; i++) {

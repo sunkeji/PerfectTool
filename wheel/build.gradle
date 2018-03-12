@@ -3,10 +3,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 201802261
         versionName "1.0.0.2"
 
@@ -26,9 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:support-v4:26.1.0'
-    compile 'com.android.support:design:26.1.0'
+    compile 'com.android.support:design:27.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -37,6 +35,9 @@ dependencies {
      */
     compile 'com.google.code.gson:gson:2.7'
     compile 'commons-io:commons-io:20030203.000550'
+
+    compile 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
 }
 
 ext {

@@ -13,7 +13,6 @@ import android.util.AttributeSet;
 import com.skj.wheel.R;
 import com.skj.wheel.swiperecyclerview.util.GridItemDecoration;
 import com.skj.wheel.swiperecyclerview.util.LinearItemDecoration;
-import com.skj.wheel.swiperecyclerview.widget.DefaultItemDecoration;
 import com.skj.wheel.util.DisplayUtil;
 
 import java.util.List;
