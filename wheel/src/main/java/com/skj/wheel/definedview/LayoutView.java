@@ -765,7 +765,7 @@ public class LayoutView extends LinearLayout {
 
 
     private void setTopDrawables(TextView textView, int resId) {
-        Drawable drawable = MyApplication.mContext.getResources().getDrawable(resId);
+        Drawable drawable = getContext().getResources().getDrawable(resId);
         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());//必须设置图片大小，否则不显示
         textView.setCompoundDrawables(null, drawable, null, null);
     }

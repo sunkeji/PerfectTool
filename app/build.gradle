@@ -35,13 +35,13 @@ dependencies {
     /**
      *            懒人注解框架ButterKnife
      */
-    compile 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'com.github.yalantis:ucrop:2.2.1'
+    implementation 'com.github.yalantis:ucrop:2.2.1'
 //    compile(name: 'wheel', ext: 'aar')
     implementation project(':wheel')
     /**
      * 造轮子
      */
-//    compile 'com.wheel:tools:1.1.0'
+//    implementation 'com.wheel:tools:1.1.3'
 }

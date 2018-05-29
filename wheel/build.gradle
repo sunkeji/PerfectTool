@@ -26,17 +26,17 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.android.support:design:27.0.2'
+    implementation 'com.android.support:design:27.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     /**
      * gson/xml数据解析
      */
-    compile 'com.google.code.gson:gson:2.7'
-    compile 'commons-io:commons-io:20030203.000550'
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'commons-io:commons-io:20030203.000550'
 
-    compile 'com.github.bumptech.glide:glide:4.5.0'
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
 }
 
@@ -46,7 +46,7 @@ ext {
     // compile 'com.audienl:super_library:1.0.0'
     PUBLISH_GROUP_ID = 'com.wheel'
     PUBLISH_ARTIFACT_ID = 'tools'
-    PUBLISH_VERSION = '1.1.0'
+    PUBLISH_VERSION = '1.1.4'
 }
 
 uploadArchives {

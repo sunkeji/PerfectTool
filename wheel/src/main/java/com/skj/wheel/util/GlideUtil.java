@@ -24,7 +24,6 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.TransformationUtils;
 import com.bumptech.glide.request.RequestOptions;
 import com.skj.app.GlideApp;
-import com.skj.app.MyApplication;
 import com.skj.wheel.R;
 import com.skj.wheel.util.transformations.CropCircleTransformation;
 
@@ -48,8 +47,8 @@ public class GlideUtil {
         return instance;
     }
 
-    public void ImageLoader(ImageView imageView, Object url) {
-        ImageLoader(imageView, url, R.mipmap.ic_launcher);
+    public void ImageLoader(Context context, ImageView imageView, Object url) {
+        ImageLoader(context, imageView, url, R.mipmap.ic_launcher);
     }
 
     /**
@@ -68,16 +67,16 @@ public class GlideUtil {
      * @param url
      * @param defaultImg
      */
-    public void ImageLoader(ImageView imageView, Object url, int defaultImg) {
-        GlideApp.with(MyApplication.mContext).load(url)
+    public void ImageLoader(Context context, ImageView imageView, Object url, int defaultImg) {
+        GlideApp.with(context).load(url)
                 .error(defaultImg)
                 .placeholder(defaultImg)
                 .fallback(defaultImg)
                 .into(imageView);
     }
 
-    public void ImageLoader(ImageView imageView, Object url, int defaultImg, int width, int height) {
-        GlideApp.with(MyApplication.mContext).load(url)
+    public void ImageLoader(Context context, ImageView imageView, Object url, int defaultImg, int width, int height) {
+        GlideApp.with(context).load(url)
                 .error(defaultImg)
                 .placeholder(defaultImg)
                 .fallback(defaultImg)
@@ -91,8 +90,8 @@ public class GlideUtil {
      * @param imageView
      * @param url
      */
-    public void ImageCircleLoader(ImageView imageView, Object url) {
-        ImageCircleLoader(imageView, url, R.mipmap.ic_launcher, new CropCircleTransformation());
+    public void ImageCircleLoader(Context context, ImageView imageView, Object url) {
+        ImageCircleLoader(context, imageView, url, R.mipmap.ic_launcher, new CropCircleTransformation());
     }
 
     /**
@@ -102,8 +101,9 @@ public class GlideUtil {
      * @param url
      * @param bitmapTransformation
      */
-    public void ImageCircleLoader(ImageView imageView, Object url, int defaultImg, Transformation bitmapTransformation) {
-        RequestBuilder<Bitmap> bitmapRequestBuilder = GlideApp.with(MyApplication.mContext)
+    public void ImageCircleLoader(Context context, ImageView imageView, Object url, int defaultImg,
+                                  Transformation bitmapTransformation) {
+        RequestBuilder<Bitmap> bitmapRequestBuilder = GlideApp.with(context)
                 .asBitmap()//指定Bitmap类型的RequestBuilder
                 .load(url)//网络URL
                 .error(defaultImg)//异常图片
@@ -117,8 +117,9 @@ public class GlideUtil {
                 .into(imageView);
     }
 
-    public void ImageCircleLoader(ImageView imageView, Object url, int defaultImg, int width, int height, Transformation bitmapTransformation) {
-        RequestBuilder<Bitmap> bitmapRequestBuilder = GlideApp.with(MyApplication.mContext)
+    public void ImageCircleLoader(Context context, ImageView imageView, Object url, int defaultImg,
+                                  int width, int height, Transformation bitmapTransformation) {
+        RequestBuilder<Bitmap> bitmapRequestBuilder = GlideApp.with(context)
                 .asBitmap()//指定Bitmap类型的RequestBuilder
                 .load(url)//网络URL
                 .override(width, height)
@@ -145,8 +146,9 @@ public class GlideUtil {
      * @param url
      * @param multiTransformation
      */
-    public void ImageCircleLoader(ImageView imageView, Object url, int defaultImg, MultiTransformation multiTransformation) {
-        RequestBuilder<Bitmap> bitmapRequestBuilder = GlideApp.with(MyApplication.mContext)
+    public void ImageCircleLoader(Context context, ImageView imageView, Object url, int defaultImg,
+                                  MultiTransformation multiTransformation) {
+        RequestBuilder<Bitmap> bitmapRequestBuilder = GlideApp.with(context)
                 .asBitmap()//指定Bitmap类型的RequestBuilder
                 .load(url)//网络URL
                 .error(defaultImg)//异常图片
@@ -161,8 +163,9 @@ public class GlideUtil {
                 .into(imageView);
     }
 
-    public void ImageCircleLoader(ImageView imageView, Object url, int defaultImg, int width, int height, MultiTransformation multiTransformation) {
-        RequestBuilder<Bitmap> bitmapRequestBuilder = GlideApp.with(MyApplication.mContext)
+    public void ImageCircleLoader(Context context, ImageView imageView, Object url, int defaultImg,
+                                  int width, int height, MultiTransformation multiTransformation) {
+        RequestBuilder<Bitmap> bitmapRequestBuilder = GlideApp.with(context)
                 .asBitmap()//指定Bitmap类型的RequestBuilder
                 .load(url)//网络URL
                 .override(width, height)
