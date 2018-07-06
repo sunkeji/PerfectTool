@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.skj.app.MyApplication;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -23,6 +21,20 @@ public class SPUtil {
      * 保存在手机里面的文件名
      */
     public static final String APP_COMMON_FILE_NAME = "sp_";
+    private static SPUtil spUtil;
+
+    private Context mContext;
+
+    public static SPUtil getInstance(Context context) {
+        if (spUtil == null)
+            spUtil = new SPUtil(context);
+        return spUtil;
+    }
+
+    public SPUtil(Context context) {
+        this.mContext = context;
+
+    }
 
     /**
      * 保存数据的方法，我们需要拿到保存数据的具体类型，然后根据类型调用不同的保存方法
@@ -30,8 +42,8 @@ public class SPUtil {
      * @param key
      * @param object
      */
-    public static boolean saveToApp(String key, Object object) {
-        SharedPreferences sp = MyApplication.mContext
+    public boolean saveToApp(String key, Object object) {
+        SharedPreferences sp = mContext
                 .getSharedPreferences(APP_COMMON_FILE_NAME,
                         Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
@@ -60,8 +72,8 @@ public class SPUtil {
      * @param defaultObject
      * @return
      */
-    public static Object getFromApp(String key, Object defaultObject) {
-        SharedPreferences sp = MyApplication.mContext
+    public Object getFromApp(String key, Object defaultObject) {
+        SharedPreferences sp = mContext
                 .getSharedPreferences(APP_COMMON_FILE_NAME,
                         Context.MODE_PRIVATE);
         if (defaultObject instanceof String) {
@@ -86,7 +98,7 @@ public class SPUtil {
      * @return
      * @throws IOException
      */
-    public static String serialize(Object object) throws IOException {
+    public String serialize(Object object) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         objectOutputStream.writeObject(object);
@@ -105,7 +117,7 @@ public class SPUtil {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public static Object deSerialization(String str) throws IOException, ClassNotFoundException {
+    public Object deSerialization(String str) throws IOException, ClassNotFoundException {
         if (TextUtil.isEmpty(str))
             return null;
         String redStr = java.net.URLDecoder.decode(str, "UTF-8");
@@ -123,7 +135,7 @@ public class SPUtil {
      * @param data
      * @return
      */
-    public static boolean putData(Object data) {
+    public boolean putData(Object data) {
         String str = "";
         try {
             str = serialize(data);
@@ -135,7 +147,7 @@ public class SPUtil {
         return saveToApp("", str);
     }
 
-    public static Object getData() {
+    public Object getData() {
         Object data = null;
         String str = (String) getFromApp("", "");
         try {
@@ -156,7 +168,7 @@ public class SPUtil {
      *
      * @return
      */
-    public static String getString() {
+    public String getString() {
         String data = (String) getFromApp("", "");
         if (TextUtils.isEmpty(data)) {
             return "";
@@ -168,7 +180,7 @@ public class SPUtil {
     /**
      * 清空保存在手机的数据
      */
-    public static void clear() {
+    public void clear() {
         remove("");
     }
 
@@ -177,9 +189,9 @@ public class SPUtil {
      *
      * @param key
      */
-    public static void remove(String key) {
+    public void remove(String key) {
         try {
-            SharedPreferences sp = MyApplication.mContext.getSharedPreferences(
+            SharedPreferences sp = mContext.getSharedPreferences(
                     APP_COMMON_FILE_NAME, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();
             editor.remove(key);

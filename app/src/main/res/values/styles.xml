@@ -13,4 +13,13 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <!-- 弹出框 -->
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!-- 边框 -->
+        <!--<item name="android:windowIsFloating">true</item>&lt;!&ndash; 是否浮现在activity之上 &ndash;&gt;-->
+        <item name="android:windowIsTranslucent">true</item><!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowBackground">@color/transparent</item><!-- 自己想要的背景 -->
+        <!--<item name="android:backgroundDimEnabled">false</item>&lt;!&ndash; 模糊 &ndash;&gt;-->
+    </style>
 </resources>

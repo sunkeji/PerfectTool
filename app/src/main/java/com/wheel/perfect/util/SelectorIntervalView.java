@@ -39,7 +39,7 @@ public class SelectorIntervalView {
      * @param list    ArrayList<?>
      * @param click   OnWheelViewClick
      */
-    public static void alertBottomWheelOption(Context context, ArrayList<?> list, ArrayList<?> list1,
+    public static void alertBottomWheelOption(final Context context, ArrayList<?> list, ArrayList<?> list1,
                                               final OnWheelViewClick click) {
 
         final PopupWindow popupWindow = new PopupWindow();
@@ -65,7 +65,7 @@ public class SelectorIntervalView {
                 if (wv_option2.getCurrentItem() > wv_option.getCurrentItem())
                     click.onClick(view, wv_option.getCurrentItem(), wv_option2.getCurrentItem());
                 else
-                    ToastUtil.TextToast("后边的值要大于前者");
+                    ToastUtil.TextToast(context, "后边的值要大于前者");
             }
         });
 

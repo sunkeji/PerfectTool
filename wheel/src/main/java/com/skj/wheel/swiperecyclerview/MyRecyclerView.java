@@ -80,7 +80,7 @@ public class MyRecyclerView extends RecyclerView {
     public void setGridLayoutManager(Context context, int spaceCount) {
         gridLayoutManager = new GridLayoutManager(context, spaceCount);
         this.setLayoutManager(gridLayoutManager);
-        itemDecoration = new GridItemDecoration(DisplayUtil.dip2px(10));
+        itemDecoration = new GridItemDecoration(DisplayUtil.dp2px(mContext, 10));
         this.addItemDecoration(itemDecoration);
     }
 
@@ -121,9 +121,9 @@ public class MyRecyclerView extends RecyclerView {
      */
     public void setItemDecoration() {
         if (type == 1) {
-            setItemDecoration(DisplayUtil.dip2px(1));
+            setItemDecoration(DisplayUtil.dp2px(mContext, 1));
         } else if (type == 0) {
-            setItemDecoration(DisplayUtil.dip2px(10));
+            setItemDecoration(DisplayUtil.dp2px(mContext, 10));
         }
     }
 

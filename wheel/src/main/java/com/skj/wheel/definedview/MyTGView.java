@@ -161,6 +161,8 @@ public class MyTGView extends ViewGroup {
      */
     private InternalTagClickListener mInternalTagClickListener = new InternalTagClickListener();
 
+    private Context context;
+
     public MyTGView(Context context) {
         this(context, null);
     }
@@ -171,6 +173,7 @@ public class MyTGView extends ViewGroup {
 
     public MyTGView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.context = context;
         default_border_stroke_width = dp2px(0.5f);
         default_text_size = sp2px(13.0f);
         default_horizontal_spacing = dp2px(8.0f);
@@ -744,14 +747,17 @@ public class MyTGView extends ViewGroup {
             /**
              * 画标签背景色的形状
              */
-            canvas.drawRoundRect(mLeftCornerRectF, DisplayUtil.dip2px(7), DisplayUtil.dip2px(7), mBackgroundPaint);
-            canvas.drawRoundRect(mRightCornerRectF, DisplayUtil.dip2px(7), DisplayUtil.dip2px(7), mBackgroundPaint);
+            canvas.drawRoundRect(mLeftCornerRectF, DisplayUtil.dp2px(context, 7),
+                    DisplayUtil.dp2px(context, 7), mBackgroundPaint);
+            canvas.drawRoundRect(mRightCornerRectF, DisplayUtil.dp2px(context, 7),
+                    DisplayUtil.dp2px(context, 7), mBackgroundPaint);
             canvas.drawRect(mHorizontalBlankFillRectF, mBackgroundPaint);
             canvas.drawRect(mVerticalBlankFillRectF, mBackgroundPaint);
 
             if (isChecked) {
                 canvas.save();
-                canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.icon_7_select), mRightCornerRectF.centerX() - DisplayUtil.dip2px(3),
+                canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.icon_7_select)
+                        , mRightCornerRectF.centerX() - DisplayUtil.dp2px(context, 3),
                         mRightCornerRectF.bottom / 2, mCheckedMarkerPaint);
                 canvas.restore();
             }

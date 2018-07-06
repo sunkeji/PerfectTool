@@ -5,46 +5,24 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
-import com.skj.app.MyApplication;
-
 
 /**
  * Created by 孙科技 on 2017/4/26.
  */
 
 public class DisplayUtil {
-    public static int px2sp(Context context, float pxValue) {
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (pxValue / fontScale + 0.5f);
-    }
-
-    public static int dp2px(Context context, int dp) {
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        return (int) ((dp * displayMetrics.density) + 0.5);
-    }
-
-    public static float dip2px(Context context, float dp) {
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        return (float) (((double) displayMetrics.density + 0.5D) * (double) dp);
-    }
-
-    public static float px2dip(Context context, int px) {
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        return (float) ((double) px / ((double) displayMetrics.density + 0.5D));
-    }
-
     /**
      * 获取屏幕宽高
      *
      * @return
      */
-    public static int getScreenWidth() {
-        DisplayMetrics dm = MyApplication.mContext.getResources().getDisplayMetrics();
+    public static int getScreenWidth(Context context) {
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.widthPixels;
     }
 
-    public static int getScreenHeight() {
-        DisplayMetrics dm = MyApplication.mContext.getResources().getDisplayMetrics();
+    public static int getScreenHeight(Context context) {
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.heightPixels;
     }
 
@@ -54,8 +32,8 @@ public class DisplayUtil {
      * @param pxValue （DisplayMetrics类中属性density）
      * @return
      */
-    public static int px2dip(float pxValue) {
-        final float scale = MyApplication.mContext.getResources().getDisplayMetrics().density;
+    public static int px2dp(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
 
@@ -66,8 +44,8 @@ public class DisplayUtil {
      * @param （DisplayMetrics类中属性density）
      * @return
      */
-    public static int dip2px(float dipValue) {
-        final float scale = MyApplication.mContext.getResources().getDisplayMetrics().density;
+    public static int dp2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
 
@@ -78,8 +56,8 @@ public class DisplayUtil {
      * @param （DisplayMetrics类中属性scaledDensity）
      * @return
      */
-    public static int px2sp(float pxValue) {
-        final float fontScale = MyApplication.mContext.getResources().getDisplayMetrics().scaledDensity;
+    public static int px2sp(Context context, float pxValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
 
@@ -90,16 +68,16 @@ public class DisplayUtil {
      * @param （DisplayMetrics类中属性scaledDensity）
      * @return
      */
-    public static int sp2px(float spValue) {
-        final float fontScale = MyApplication.mContext.getResources().getDisplayMetrics().scaledDensity;
+    public static int sp2px(Context context, float spValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 
     /**
      * 设置字体
      */
-    public static void setDefault() {
-        Resources res = MyApplication.mContext.getResources();
+    public static void setDefault(Context context) {
+        Resources res = context.getResources();
         Configuration config1 = new Configuration();
         config1.setToDefaults();
         res.updateConfiguration(config1, res.getDisplayMetrics());

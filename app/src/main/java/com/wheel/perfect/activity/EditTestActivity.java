@@ -8,11 +8,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.skj.wheel.definedview.MyTSView;
+import com.skj.wheel.util.GlideUtil;
 import com.skj.wheel.util.LogUtil;
 import com.wheel.perfect.R;
+
+import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +33,8 @@ public class EditTestActivity extends AppCompatActivity {
     EditText edit1;
     @BindView(R.id.ts_view)
     MyTSView tsView;
+    @BindView(R.id.image_view)
+    ImageView imageView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +66,8 @@ public class EditTestActivity extends AppCompatActivity {
         });
         String[] s = new String[]{"ceshi", "cddjdjjd"};
         tsView.setmAdvertisements(s);
-
+        GlideUtil.getInstance().ImageCircleLoader(this, imageView,
+                "http://img0.imgtn.bdimg.com/it/u=3565185884,2248353566&fm=27&gp=0.jpg");
     }
 
     private boolean mBackEnable = false;
@@ -99,5 +106,9 @@ public class EditTestActivity extends AppCompatActivity {
             mSearchLayout.getViewTreeObserver().removeOnGlobalLayoutListener(mOnGlobalLayoutListener);
         }
         super.onDestroy();
+    }
+
+    public static long getTotalSpace(File file) {
+        return file.getTotalSpace();
     }
 }

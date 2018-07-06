@@ -125,7 +125,7 @@ public class AlbumAllActivity extends BaseActivity implements View.OnClickListen
                 map.put("position", "1");
                 IntentUtil.startActivity(activity, AlbumVPFixedActivity.class, map);
             } else {
-                ToastUtil.TextToast("您未选择图片");
+                ToastUtil.TextToast(this, "您未选择图片");
             }
         } else if (i == R.id.layout_ok) {
             finish();

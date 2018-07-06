@@ -4,12 +4,9 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.skj.app.MyApplication;
 
 /**
  * Created by 孙科技 on 2017/10/31.
@@ -17,8 +14,6 @@ import com.skj.app.MyApplication;
 
 public class ToastUtil {
     private static Toast toast = null;
-    public static int LENGTH_LONG = Toast.LENGTH_LONG;
-    public static int LENGTH_SHORT = Toast.LENGTH_SHORT;
     public static int duration = 1000 * 10;
 
     /**
@@ -26,11 +21,6 @@ public class ToastUtil {
      *
      * @param text
      */
-
-    public static void TextToast(final CharSequence text) {
-        TextToast(MyApplication.mContext, text);
-    }
-
     public static void TextToast(final Context context, final CharSequence text) {
         if (TextUtil.isEmpty(text))
             return;
@@ -50,7 +40,7 @@ public class ToastUtil {
             });
         } else {
             // 创建一个Toast提示消息
-            toast = Toast.makeText(MyApplication.mContext, text, duration);
+            toast = Toast.makeText(context, text, duration);
             // 设置Toast提示消息在屏幕上的位置
             toast.setGravity(Gravity.CENTER, 0, 0);
             // 显示消息
@@ -66,7 +56,7 @@ public class ToastUtil {
      * @param text
      * @param isShow
      */
-    public static void TextToast(final CharSequence text, final boolean isShow) {
+    public static void TextToast(final Context context, final CharSequence text, final boolean isShow) {
         if (TextUtil.isEmpty(text))
             return;
         Looper myLooper = Looper.myLooper();
@@ -76,7 +66,7 @@ public class ToastUtil {
                 @Override
                 public void run() {
                     // 创建一个Toast提示消息
-                    toast = Toast.makeText(MyApplication.mContext, text, duration);
+                    toast = Toast.makeText(context, text, duration);
                     // 设置Toast提示消息在屏幕上的位置
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     // 显示消息
@@ -86,7 +76,7 @@ public class ToastUtil {
             });
         } else {
             // 创建一个Toast提示消息
-            toast = Toast.makeText(MyApplication.mContext, text, duration);
+            toast = Toast.makeText(context, text, duration);
             // 设置Toast提示消息在屏幕上的位置
             toast.setGravity(Gravity.CENTER, 0, 0);
             // 显示消息
@@ -102,22 +92,22 @@ public class ToastUtil {
      * @param ImageResourceId
      * @param text
      */
-    public static void ImageToast(int ImageResourceId,
+    public static void ImageToast(Context context, int ImageResourceId,
                                   CharSequence text) {
-        ImageToast(ImageResourceId, text, 1);
+        ImageToast(context, ImageResourceId, text, 1);
     }
 
-    public static void ImageToast(int ImageResourceId,
+    public static void ImageToast(Context context, int ImageResourceId,
                                   CharSequence text, int orientation) {
         // 创建一个Toast提示消息
-        toast = Toast.makeText(MyApplication.mContext, text, Toast.LENGTH_LONG);
+        toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
 
         // 设置Toast提示消息在屏幕上的位置
         toast.setGravity(Gravity.CENTER, 0, 0);
         // 获取Toast提示消息里原有的View
         LinearLayout toastView = (LinearLayout) toast.getView();
         // 创建一个ImageView
-        ImageView img = new ImageView(MyApplication.mContext);
+        ImageView img = new ImageView(context);
         img.setImageResource(ImageResourceId);
         img.setPadding(0, 20, 0, 20);
         // 创建一个LineLayout容器

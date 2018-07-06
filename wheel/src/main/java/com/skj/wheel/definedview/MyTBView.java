@@ -117,7 +117,7 @@ public class MyTBView extends Button {
      * 开始
      */
     public void start() {
-        ToastUtil.TextToast("正在发送，请稍候...");
+        ToastUtil.TextToast(context, "正在发送，请稍候...");
         initTimer(0x01);
         this.setText("重新发送" + "(" + time / 1000 + ")");
         this.setEnabled(false);

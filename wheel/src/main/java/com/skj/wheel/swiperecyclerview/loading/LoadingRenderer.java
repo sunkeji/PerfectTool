@@ -35,7 +35,7 @@ public abstract class LoadingRenderer {
     protected float mHeight;
 
     public LoadingRenderer(Context context) {
-        this.mWidth = this.mHeight = DisplayUtil.dip2px(context, 56.0F);
+        this.mWidth = this.mHeight = DisplayUtil.dp2px(context, 56.0F);
         this.mDuration = 1333L;
         this.setupAnimators();
     }

@@ -17,7 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.skj.app.MyApplication;
 import com.skj.wheel.R;
 import com.skj.wheel.util.LogUtil;
 

@@ -3,12 +3,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 201802261
-        versionName "1.0.0.2"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0.0.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -25,9 +25,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'com.android.support:design:27.0.2'
     testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:design:28.0.0-alpha3'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     /**
@@ -38,15 +37,17 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.5.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+
+
 }
 
 ext {
     // 从Github上clone下来的项目的本地地址
-    GITHUB_REPO_PATH = "F:\\myself\\wheel"
+    GITHUB_REPO_PATH = "E:\\F\\private_souce_code\\wheel"
     // compile 'com.audienl:super_library:1.0.0'
     PUBLISH_GROUP_ID = 'com.wheel'
     PUBLISH_ARTIFACT_ID = 'tools'
-    PUBLISH_VERSION = '1.1.4'
+    PUBLISH_VERSION = '1.1.5'
 }
 
 uploadArchives {

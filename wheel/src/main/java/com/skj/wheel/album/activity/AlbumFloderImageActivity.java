@@ -95,7 +95,7 @@ public class AlbumFloderImageActivity extends BaseActivity implements View.OnCli
                 if (Bimp.tempSelectBitmap.size() >= PublicWay.num && isChecked) {
                     button.setVisibility(View.GONE);
                     toggleButton.setChecked(false);
-                    ToastUtil.TextToast("超出可选图片张数");
+                    ToastUtil.TextToast(AlbumFloderImageActivity.this, "超出可选图片张数");
                     return;
                 }
 
@@ -141,7 +141,7 @@ public class AlbumFloderImageActivity extends BaseActivity implements View.OnCli
                 map.put("position", "1");
                 IntentUtil.startActivity(activity, AlbumVPFixedActivity.class, map);
             } else {
-                ToastUtil.TextToast("您未选择图片");
+                ToastUtil.TextToast(this, "您未选择图片");
             }
         } else if (i == R.id.layout_ok) {
             ActivityListUtil.finishAllActivity();

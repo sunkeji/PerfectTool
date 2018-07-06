@@ -33,7 +33,7 @@ public class MyETView extends EditText implements View.OnFocusChangeListener, Te
      * 删除按钮的引用
      */
     private Drawable mClearDrawable = null;
-    private Context mContext = null;
+    private Context mContext;
 
     public MyETView(Context context) {
         this(context, null);
@@ -95,7 +95,7 @@ public class MyETView extends EditText implements View.OnFocusChangeListener, Te
             if (!matcher.find()) {
                 return null;
             } else {
-                ToastUtil.TextToast("不允许输入特殊符号！");
+                ToastUtil.TextToast(mContext, "不允许输入特殊符号！");
                 return "";
             }
         }
@@ -110,7 +110,7 @@ public class MyETView extends EditText implements View.OnFocusChangeListener, Te
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                 if (dest.length() > maxContent) {
-                    ToastUtil.TextToast("字数超出限制！");
+                    ToastUtil.TextToast(mContext, "字数超出限制！");
                     return "";
                 }
                 return super.filter(source, start, end, dest, dstart, dend);

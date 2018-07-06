@@ -36,7 +36,7 @@ public class DefaultItemTouchHelper extends CompatItemTouchHelper {
      */
     private DefaultItemTouchHelper(DefaultItemTouchHelperCallback callback) {
         super(callback);
-        mDefaultItemTouchHelperCallback = (DefaultItemTouchHelperCallback) getCallback();
+//        mDefaultItemTouchHelperCallback = getCallback();
     }
 
     /**

@@ -74,8 +74,8 @@ public class LevelLoadingRenderer extends LoadingRenderer {
     }
 
     private void init(Context context) {
-        this.mStrokeWidth = DisplayUtil.dip2px(context, 2.5F);
-        this.mCenterRadius = DisplayUtil.dip2px(context, 12.5F);
+        this.mStrokeWidth = DisplayUtil.dp2px(context, 2.5F);
+        this.mCenterRadius = DisplayUtil.dp2px(context, 12.5F);
         this.mLevelSwipeDegrees = new float[3];
         this.mLevelColors = DEFAULT_LEVEL_COLORS;
     }
