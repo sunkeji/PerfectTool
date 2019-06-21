@@ -6,6 +6,8 @@ import android.os.Handler;
 
 import java.lang.ref.SoftReference;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.subscribers.ResourceSubscriber;
 
 /**
@@ -105,5 +107,16 @@ public class ProgressDownSubscriber<T> extends ResourceSubscriber<T>
                 mSubscriberOnNextListener.get().updateProgress(downInfo.getApkDownLength(), downInfo.getApkTotalLength());
             }
         });
+
+//        Observable.just(read).observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<Long>() {
+//                    @Override
+//                    public void call(Long aLong) {
+//                        /*如果暂停或者停止状态延迟，不需要继续发送回调，影响显示*/
+//                        if(downInfo.getState()==DownState.PAUSE||downInfo.getState()==DownState.STOP)return;
+//                        downInfo.setState(DownState.DOWN);
+//                        mSubscriberOnNextListener.get().updateProgress(aLong,downInfo.getCountLength());
+//                    }
+//                });
     }
 }

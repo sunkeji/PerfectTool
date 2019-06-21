@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 
 import com.skj.wheel.R;
-import com.skj.wheel.util.LogUtil;
+import com.skj.wheel.util.KLogUtil;
 
 /**
  * Created by 孙科技 on 2018/2/11.
@@ -71,11 +71,11 @@ public class SwipeMenuLayout extends ViewGroup {
     }
 
     private void readAttrs(Context context, AttributeSet attrs) {
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SwipeMenuLayout);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.p_SwipeMenuLayout);
         try {
-            leftMenuId = typedArray.getResourceId(R.styleable.SwipeMenuLayout_leftMenuId, 0);
-            rightMenuId = typedArray.getResourceId(R.styleable.SwipeMenuLayout_rightMenuId, 0);
-            contentId = typedArray.getResourceId(R.styleable.SwipeMenuLayout_contentId, 0);
+            leftMenuId = typedArray.getResourceId(R.styleable.p_SwipeMenuLayout_leftMenuId, 0);
+            rightMenuId = typedArray.getResourceId(R.styleable.p_SwipeMenuLayout_rightMenuId, 0);
+            contentId = typedArray.getResourceId(R.styleable.p_SwipeMenuLayout_contentId, 0);
         } finally {
             typedArray.recycle();
         }
@@ -102,7 +102,7 @@ public class SwipeMenuLayout extends ViewGroup {
             }
             measureChild(childView, widthMeasureSpec, heightMeasureSpec);
             viewHeight = Math.max(viewHeight, childView.getMeasuredHeight());
-            LogUtil.d(TAG, "onMeasure: getMeasureWidth() = " + i + "," + +childView.getMeasuredWidth());
+            KLogUtil.d(TAG, "onMeasure: getMeasureWidth() = " + i + "," + +childView.getMeasuredWidth());
             viewWidth += childView.getMeasuredWidth();
         }
         setMeasuredDimension(viewWidth, viewHeight);
@@ -110,7 +110,7 @@ public class SwipeMenuLayout extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        LogUtil.d(TAG, "onLayout: l = " + l + ",t = " + t + ",r = " + r + ",b = " + b);
+        KLogUtil.d(TAG, "onLayout: l = " + l + ",t = " + t + ",r = " + r + ",b = " + b);
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View childView = getChildAt(i);
@@ -129,17 +129,17 @@ public class SwipeMenuLayout extends ViewGroup {
 
         // 布局 leftMenu
         if (leftMenuView != null) {
-            LogUtil.d(TAG, "onLayout: leftMenuView.getMeasureWidth() = " + leftMenuView.getMeasuredWidth());
+            KLogUtil.d(TAG, "onLayout: leftMenuView.getMeasureWidth() = " + leftMenuView.getMeasuredWidth());
             leftMenuView.layout(-leftMenuView.getMeasuredWidth(), t, 0, b);
         }
         // 布局 contentView
         if (contentView != null) {
-            LogUtil.d(TAG, "onLayout: contentView.getMeasureWidth() = " + contentView.getMeasuredWidth());
+            KLogUtil.d(TAG, "onLayout: contentView.getMeasureWidth() = " + contentView.getMeasuredWidth());
             contentView.layout(0, t, contentView.getMeasuredWidth(), b);
         }
         // 布局 rightMenu
         if (rightMenuView != null) {
-            LogUtil.d(TAG, "onLayout: rightMenuView.getMeasureWidth() = " + rightMenuView.getMeasuredWidth());
+            KLogUtil.d(TAG, "onLayout: rightMenuView.getMeasureWidth() = " + rightMenuView.getMeasuredWidth());
             rightMenuView.layout(contentView.getMeasuredWidth(), t,
                     contentView.getMeasuredWidth() + rightMenuView.getMeasuredWidth(), b);
         }

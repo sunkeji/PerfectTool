@@ -1,6 +1,9 @@
 package com.wheel.perfect.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
@@ -14,7 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.skj.wheel.util.LogUtil;
+import com.skj.wheel.util.KLogUtil;
 import com.wheel.perfect.MyApplication;
 import com.wheel.perfect.R;
 import com.wheel.perfect.api.BaseBean;
@@ -85,7 +88,7 @@ public class OSTestActivity extends AppCompatActivity {
             huToken = "";
         }
         editToken.setText(huToken);
-        LogUtil.i("--huToken:" + huToken);
+        KLogUtil.i("--huToken:" + huToken);
 
         rgCheckType.setVisibility(View.GONE);
         checkType = "";
@@ -128,6 +131,25 @@ public class OSTestActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //获取wifi服务
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        //判断wifi是否开启
+        if (!wifiManager.isWifiEnabled()) {
+            wifiManager.setWifiEnabled(true);
+        }
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        int ipAddress = wifiInfo.getIpAddress();
+        String ip = intToIp(ipAddress);
+        KLogUtil.i("-------------", ip);
+    }
+
+    private String intToIp(int i) {
+
+        return (i & 0xFF) + "." +
+                ((i >> 8) & 0xFF) + "." +
+                ((i >> 16) & 0xFF) + "." +
+                (i >> 24 & 0xFF);
     }
 
 
@@ -180,9 +202,14 @@ public class OSTestActivity extends AppCompatActivity {
             public void onNext(BaseBean baseBean) {
                 super.onNext(baseBean);
                 String result = new Gson().toJson(baseBean).toString();
-                LogUtil.i("onNext" + result);
+                KLogUtil.i("onNext" + result);
                 tvMsg.setText("返回结果：\n\n" + MyApplication.getInstance().duplicate()
                         + "\n\n" + result);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
             }
         });
     }

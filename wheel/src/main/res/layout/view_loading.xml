@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/transparent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:id="@+id/view_loading_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp10"
+            android:layout_margin="30dp"
             android:src="@mipmap/ic_launcher"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -25,7 +25,7 @@
             android:id="@+id/view_loading_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp10"
+            android:layout_margin="30dp"
             android:text="@string/app_name"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 

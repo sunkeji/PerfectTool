@@ -19,6 +19,6 @@
         android:id="@+id/layout_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/text_color"
+        android:background="@color/transparent"
         android:visibility="gone" />
 </RelativeLayout>

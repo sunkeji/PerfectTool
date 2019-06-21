@@ -3,10 +3,8 @@ package com.wheel.perfect.api.downapi;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.skj.wheel.util.LogUtil;
-import com.skj.wheel.util.NetUtil;
-import com.wheel.perfect.MyApplication;
-import com.wheel.perfect.api.MyOkHttpClient;
+import com.skj.wheel.util.KLogUtil;
+import com.skj.wheel.util.KNetUtil;
 import com.wheel.perfect.api.MyRetrofit;
 
 import java.io.File;
@@ -20,7 +18,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -100,31 +97,33 @@ public class HttpDownManager {
             DownloadInterceptor interceptor = new DownloadInterceptor(subscriber);
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             //手动创建一个OkHttpClient并设置超时时间
-            builder.connectTimeout(60, TimeUnit.SECONDS);
+            builder.connectTimeout(6, TimeUnit.SECONDS);
             builder.addInterceptor(interceptor);
             builder.addInterceptor(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
                 @Override
                 public void log(String message) {
-                    LogUtil.i("okhttp:", "Url=" + message);
+                    KLogUtil.i("okhttp:", "Url=" + message);
                 }
             }).setLevel(HttpLoggingInterceptor.Level.BODY));//日志拦截器
 
             httpService = MyRetrofit.getRequest(HttpDownService.class,
-                    NetUtil.getBasUrl(info.getApkUrl()), builder.build());
+                    KNetUtil.getBasUrl(info.getApkUrl()), builder.build());
             info.setService(httpService);
             downInfos.add(info);
         }
+        KLogUtil.i(info.getApkDownLength() + "-");
         httpService.download("bytes=" + info.getApkDownLength() + "-", info.getApkUrl())
                 /*指定线程*/
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 /*失败后的retry配置*/
 //                .retryWhen(new RetryWhenNetworkException())
-//                .retryWhen(new RetryWhenNetworkException())
+                .retryWhen(new RetryWhenNetworkException())
                 /*读取下载写入文件*/
                 .map(new Function<ResponseBody, DownApkInfo>() {
                     @Override
                     public DownApkInfo apply(ResponseBody responseBody) throws Exception {
+                        KLogUtil.i(responseBody.contentLength() + "=");
                         writeCaches(responseBody, new File(info.getApkSavePath()), info);
                         return info;
                     }

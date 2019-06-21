@@ -1,13 +1,9 @@
 package com.wheel.perfect.api;
 
-import com.skj.wheel.util.SPUtil;
-
 import java.util.Map;
 
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.QueryMap;
 
 /**

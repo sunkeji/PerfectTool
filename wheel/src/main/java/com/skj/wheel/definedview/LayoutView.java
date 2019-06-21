@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 
 import com.skj.wheel.R;
-import com.skj.wheel.util.LogUtil;
+import com.skj.wheel.util.KLogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -545,7 +545,7 @@ public class LayoutView extends LinearLayout {
 
     private void getChildViews() {
         int childCount = getChildCount();
-        LogUtil.d("EmptyLayout", "ChildCount:" + childCount);
+        KLogUtil.d("EmptyLayout", "ChildCount:" + childCount);
         View view;
         for (int i = 0; i < childCount; i++) {
             view = getChildAt(i);

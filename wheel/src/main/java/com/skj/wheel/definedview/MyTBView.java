@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.widget.Button;
 
 
-import com.skj.wheel.util.ToastUtil;
+import com.skj.wheel.util.KToastUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -117,7 +117,7 @@ public class MyTBView extends Button {
      * 开始
      */
     public void start() {
-        ToastUtil.TextToast(context, "正在发送，请稍候...");
+        KToastUtil.TextToast(context, "正在发送，请稍候...");
         initTimer(0x01);
         this.setText("重新发送" + "(" + time / 1000 + ")");
         this.setEnabled(false);

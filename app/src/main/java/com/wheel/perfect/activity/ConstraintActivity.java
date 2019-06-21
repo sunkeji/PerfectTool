@@ -50,20 +50,21 @@ public class ConstraintActivity extends AppCompatActivity {
         swipeRefresh.setOnSwipeListener(new MySwipeRLView.OnSwipeListener() {
             @Override
             public void onRefresh() {
-                listData.clear();
-                getList();
-                adapter.updataList(listData);
+//                listData.clear();
+//                initData();
+//                adapter.updataList(listData);
             }
         });
         recyclerView.setOnBottomListener(new MyRecyclerView.OnBottomListener() {
             @Override
             public void onLoadMore() {
-                getList();
-                adapter.updataList(listData);
+//                initData();
+//                adapter.updataList(listData);
             }
         });
-        adapter = new DownListAdapter(listData);
-        recyclerView.setAdapter(adapter);
+//        adapter = new DownListAdapter(listData);
+//        recyclerView.setAdapter(adapter);
+        initData();
     }
 
     private void getList() {
@@ -93,12 +94,12 @@ public class ConstraintActivity extends AppCompatActivity {
             for (int i = 0; i < 4; i++) {
                 File outputFile = new File
                         (Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                                "test" + i + ".mp4");
+                                "android" + i + ".apk");
                 DownApkInfo apkApi = new DownApkInfo();
                 if (i == 0)
-                    apkApi.setApkUrl("http://47.104.135.91/yc.apk");
+                    apkApi.setApkUrl("http://imtt.dd.qq.com/16891/1003ECB6536079D8BE30B99D07D3B106.apk");
                 else
-                    apkApi.setApkUrl("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
+                    apkApi.setApkUrl("http://imtt.dd.qq.com/16891/D7C2338128FB42016E1116F017BF31F0.apk");
                 apkApi.setId(i);
                 apkApi.setUpdateProgress(true);
                 apkApi.setApkSavePath(outputFile.getAbsolutePath());
@@ -114,6 +115,8 @@ public class ConstraintActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         /*记录退出时下载任务的状态-复原用*/
+        if (dbUtil == null)
+            return;
         for (DownApkInfo downInfo : listData) {
             dbUtil.update(downInfo);
         }

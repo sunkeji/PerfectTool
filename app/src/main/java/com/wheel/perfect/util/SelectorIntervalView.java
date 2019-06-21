@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.skj.wheel.definedview.selector.WheelView;
 import com.skj.wheel.definedview.selector.adapters.ArrayWheelAdapter;
-import com.skj.wheel.util.ToastUtil;
+import com.skj.wheel.util.KToastUtil;
 import com.wheel.perfect.R;
 
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class SelectorIntervalView {
                 if (wv_option2.getCurrentItem() > wv_option.getCurrentItem())
                     click.onClick(view, wv_option.getCurrentItem(), wv_option2.getCurrentItem());
                 else
-                    ToastUtil.TextToast(context, "后边的值要大于前者");
+                    KToastUtil.TextToast(context, "后边的值要大于前者");
             }
         });
 

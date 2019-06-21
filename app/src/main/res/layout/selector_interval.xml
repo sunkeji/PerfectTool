@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:background="@color/transparent"
         android:orientation="vertical">
 
         <include layout="@layout/selector_layout_title_bar" />
@@ -26,7 +26,7 @@
 
             <com.skj.wheel.definedview.selector.WheelView
                 android:id="@+id/wv_option1"
-                android:layout_width="@dimen/x10"
+                android:layout_width="@dimen/dp10"
                 android:layout_height="wrap_content" />
 
             <com.skj.wheel.definedview.selector.WheelView

@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.net.ParseException;
 
 import com.google.gson.JsonParseException;
-import com.skj.wheel.util.LogUtil;
-import com.skj.wheel.util.ToastUtil;
+import com.skj.wheel.util.KLogUtil;
+import com.skj.wheel.util.KToastUtil;
 import com.wheel.perfect.MyApplication;
 import com.wheel.perfect.util.DialogUtil;
 
@@ -65,12 +65,12 @@ public class CommonResponseSubscriber<T> extends ResourceSubscriber<T> {
         } else {
             onException(ExceptionReason.UNKNOWN_ERROR);
         }
-        LogUtil.e("异常提示:" + e.getMessage() + "-" + e.getLocalizedMessage());
+        KLogUtil.e("异常提示:" + e.getMessage() + "-" + e.getLocalizedMessage());
     }
 
     @Override
     public void onComplete() {
-        LogUtil.i("onCompleted");
+        KLogUtil.i("onCompleted");
         dialogUtil.closeLoading();
     }
 
@@ -78,7 +78,7 @@ public class CommonResponseSubscriber<T> extends ResourceSubscriber<T> {
     protected void onStart() {
         super.onStart();
         dialogUtil.startLoading();
-        LogUtil.i("onStart");
+        KLogUtil.i("onStart");
     }
 
     /**
@@ -89,20 +89,20 @@ public class CommonResponseSubscriber<T> extends ResourceSubscriber<T> {
     public void onException(ExceptionReason reason) {
         switch (reason) {
             case CONNECT_ERROR:
-                ToastUtil.TextToast(MyApplication.mContext, "连接错误");
+                KToastUtil.TextToast(MyApplication.mContext, "连接错误");
                 break;
             case CONNECT_TIMEOUT:
-                ToastUtil.TextToast(MyApplication.mContext, "连接超时");
+                KToastUtil.TextToast(MyApplication.mContext, "连接超时");
                 break;
             case BAD_NETWORK:
-                ToastUtil.TextToast(MyApplication.mContext, "网络问题");
+                KToastUtil.TextToast(MyApplication.mContext, "网络问题");
                 break;
             case PARSE_ERROR:
-                ToastUtil.TextToast(MyApplication.mContext, "解析数据失败");
+                KToastUtil.TextToast(MyApplication.mContext, "解析数据失败");
                 break;
             case UNKNOWN_ERROR:
             default:
-                ToastUtil.TextToast(MyApplication.mContext, "未知错误");
+                KToastUtil.TextToast(MyApplication.mContext, "未知错误");
                 break;
         }
     }

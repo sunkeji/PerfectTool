@@ -22,7 +22,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-import com.skj.wheel.util.DisplayUtil;
+import com.skj.wheel.util.KDisplayUtil;
 
 public class LevelLoadingRenderer extends LoadingRenderer {
     private static final Interpolator LINEAR_INTERPOLATOR = new LinearInterpolator();
@@ -74,8 +74,8 @@ public class LevelLoadingRenderer extends LoadingRenderer {
     }
 
     private void init(Context context) {
-        this.mStrokeWidth = DisplayUtil.dp2px(context, 2.5F);
-        this.mCenterRadius = DisplayUtil.dp2px(context, 12.5F);
+        this.mStrokeWidth = KDisplayUtil.dp2px(context, 2.5F);
+        this.mCenterRadius = KDisplayUtil.dp2px(context, 12.5F);
         this.mLevelSwipeDegrees = new float[3];
         this.mLevelColors = DEFAULT_LEVEL_COLORS;
     }

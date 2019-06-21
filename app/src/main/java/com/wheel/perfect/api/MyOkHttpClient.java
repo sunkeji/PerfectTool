@@ -3,7 +3,7 @@ package com.wheel.perfect.api;
 import android.os.Environment;
 
 
-import com.skj.wheel.util.LogUtil;
+import com.skj.wheel.util.KLogUtil;
 import com.wheel.perfect.MyApplication;
 import com.wheel.perfect.api.downapi.DownloadProgressListener;
 import com.wheel.perfect.api.downapi.DownloadResponseBody;
@@ -12,12 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
-import java.util.prefs.Preferences;
 
-import javax.net.ssl.SSLSocketFactory;
-
-import io.reactivex.Flowable;
-import io.reactivex.functions.Function;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -69,7 +64,7 @@ public class MyOkHttpClient {
                     .addInterceptor(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
                         @Override
                         public void log(String message) {
-                            LogUtil.i("okhttp:", "Url=" + message);
+                            KLogUtil.i("okhttp:", "Url=" + message);
                             if (message.contains("--> GET"))
                                 MyApplication.getInstance().copy(message);
                         }
@@ -141,7 +136,7 @@ public class MyOkHttpClient {
                 for (String header : originalResponse.headers("Set-Cookie")) {
                     cookies.add(header);
                 }
-                LogUtil.i("-------cookie:" + cookies);
+                KLogUtil.i("-------cookie:" + cookies);
             }
             return originalResponse;
         }

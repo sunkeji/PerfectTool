@@ -14,7 +14,7 @@ import com.skj.wheel.R;
 
 public class MySwipeRLView extends SwipeRefreshLayout implements SwipeRefreshLayout.OnRefreshListener {
     private Handler mHandler = new Handler();//UI线程
-    private int colorTheme = R.color.main_color;
+    private int colorTheme = R.color.black;
 
     private OnSwipeListener onSwipeListener;//定义下拉刷新对象
 

@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import com.skj.wheel.R;
 import com.skj.wheel.swiperecyclerview.util.GridItemDecoration;
 import com.skj.wheel.swiperecyclerview.util.LinearItemDecoration;
-import com.skj.wheel.util.DisplayUtil;
+import com.skj.wheel.util.KDisplayUtil;
 
 import java.util.List;
 
@@ -80,7 +80,7 @@ public class MyRecyclerView extends RecyclerView {
     public void setGridLayoutManager(Context context, int spaceCount) {
         gridLayoutManager = new GridLayoutManager(context, spaceCount);
         this.setLayoutManager(gridLayoutManager);
-        itemDecoration = new GridItemDecoration(DisplayUtil.dp2px(mContext, 10));
+        itemDecoration = new GridItemDecoration(KDisplayUtil.dp2px(mContext, 10));
         this.addItemDecoration(itemDecoration);
     }
 
@@ -121,9 +121,9 @@ public class MyRecyclerView extends RecyclerView {
      */
     public void setItemDecoration() {
         if (type == 1) {
-            setItemDecoration(DisplayUtil.dp2px(mContext, 1));
+            setItemDecoration(KDisplayUtil.dp2px(mContext, 1));
         } else if (type == 0) {
-            setItemDecoration(DisplayUtil.dp2px(mContext, 10));
+            setItemDecoration(KDisplayUtil.dp2px(mContext, 10));
         }
     }
 

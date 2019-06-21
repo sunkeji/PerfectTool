@@ -17,7 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.Callback;
 import android.view.animation.LinearInterpolator;
 
-import com.skj.wheel.util.DisplayUtil;
+import com.skj.wheel.util.KDisplayUtil;
 
 public abstract class LoadingRenderer {
     private static final long ANIMATION_DURATION = 1333L;
@@ -35,7 +35,7 @@ public abstract class LoadingRenderer {
     protected float mHeight;
 
     public LoadingRenderer(Context context) {
-        this.mWidth = this.mHeight = DisplayUtil.dp2px(context, 56.0F);
+        this.mWidth = this.mHeight = KDisplayUtil.dp2px(context, 56.0F);
         this.mDuration = 1333L;
         this.setupAnimators();
     }

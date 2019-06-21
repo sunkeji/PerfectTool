@@ -123,15 +123,14 @@ public class WheelView extends View {
         textColorCenter = getResources().getColor(R.color.pickerview_wheelview_textcolor_center);
         dividerColor = getResources().getColor(R.color.pickerview_wheelview_textcolor_divider);
         //配合customTextSize使用，customTextSize为true才会发挥效果
-        textSize = getResources().getDimensionPixelSize(R.dimen.x20);
         customTextSize = getResources().getBoolean(R.bool.pickerview_customTextSize);
         if (attrs != null) {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.wheelview, 0, 0);
-            mGravity = a.getInt(R.styleable.wheelview_gravity, Gravity.CENTER);
-            textColorOut = a.getColor(R.styleable.wheelview_textColorOut, textColorOut);
-            textColorCenter = a.getColor(R.styleable.wheelview_textColorCenter, textColorCenter);
-            dividerColor = a.getColor(R.styleable.wheelview_dividerColor, dividerColor);
-            textSize = a.getDimensionPixelOffset(R.styleable.wheelview_textSize, textSize);
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.p_wheelview, 0, 0);
+            mGravity = a.getInt(R.styleable.p_wheelview_gravity, Gravity.CENTER);
+            textColorOut = a.getColor(R.styleable.p_wheelview_textColorOut, textColorOut);
+            textColorCenter = a.getColor(R.styleable.p_wheelview_textColorCenter, textColorCenter);
+            dividerColor = a.getColor(R.styleable.p_wheelview_dividerColor, dividerColor);
+            textSize = a.getDimensionPixelOffset(R.styleable.p_wheelview_textSize, textSize);
         }
         initLoopView(context);
     }

@@ -8,11 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.skj.wheel.util.GlideUtil;
 import com.wheel.perfect.R;
 import com.wheel.perfect.util.TestBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,7 +50,7 @@ public class TagAdapter1 extends BaseAdapter implements OnInitSelectedPosition {
         ImageView imageView = (ImageView) view.findViewById(R.id.img_logo);
         TestBean bean = mDataList.get(position);
         textView.setText(bean.getName());
-//        GlideUtil.getInstance().ImageLoader(imageView, "http://p4.so.qhmsg.com/t01e6a5e96377408709.jpg");
+//        KGlideUtil.getInstance().ImageLoader(imageView, "http://p4.so.qhmsg.com/t01e6a5e96377408709.jpg");
         return view;
     }
 

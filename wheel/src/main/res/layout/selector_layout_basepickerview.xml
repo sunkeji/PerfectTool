@@ -3,7 +3,7 @@
     android:id="@+id/outmost_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgColor_overlay"
+    android:background="@color/transparent"
     android:clickable="true">
 
     <FrameLayout

@@ -17,7 +17,7 @@ import android.widget.EditText;
 
 
 import com.skj.wheel.R;
-import com.skj.wheel.util.ToastUtil;
+import com.skj.wheel.util.KToastUtil;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -95,7 +95,7 @@ public class MyETView extends EditText implements View.OnFocusChangeListener, Te
             if (!matcher.find()) {
                 return null;
             } else {
-                ToastUtil.TextToast(mContext, "不允许输入特殊符号！");
+                KToastUtil.TextToast(mContext, "不允许输入特殊符号！");
                 return "";
             }
         }
@@ -110,7 +110,7 @@ public class MyETView extends EditText implements View.OnFocusChangeListener, Te
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                 if (dest.length() > maxContent) {
-                    ToastUtil.TextToast(mContext, "字数超出限制！");
+                    KToastUtil.TextToast(mContext, "字数超出限制！");
                     return "";
                 }
                 return super.filter(source, start, end, dest, dstart, dend);
